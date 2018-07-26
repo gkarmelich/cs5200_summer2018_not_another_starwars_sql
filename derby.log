@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed Jul 18 14:55:24 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0164-aebf-359f-000013bb6068 
-on database directory memory:/Users/ryankalla/Desktop/CS5200/project/cs5200_summer2018_not_another_starwars_sql/testdb with class loader java.net.URLClassLoader@41228fc2 
-Loaded from file:/Users/ryankalla/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+Thu Jul 26 06:43:09 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0164-d62f-69d5-000000231cf0 
+on database directory memory:/home/gkarmelich/Documents/workspace-sts-3.9.4.RELEASE/cs5200-project/testdb with class loader sun.misc.Launcher$AppClassLoader@4c12b6 
+Loaded from file:/home/gkarmelich/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_65-b17
-user.dir=/Users/ryankalla/Desktop/CS5200/project/cs5200_summer2018_not_another_starwars_sql
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.11.1
+java.runtime.version=1.8.0_171-b11
+user.dir=/home/gkarmelich/Documents/workspace-sts-3.9.4.RELEASE/cs5200-project
+os.name=Linux
+os.arch=i386
+os.version=4.15.0-29-generic
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
