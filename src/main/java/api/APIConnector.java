@@ -7,24 +7,19 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class APIConnector {
-	  private String BASE_URL = "https://www.alphavantage.co/query?";
-	  private String apiKey = "LRYEV4NT70I96TDA";
-	  private int timeOut = 2000;
-	  private String apiParameters;
+	  private String URL = "https://www.alphavantage.co/query?";
+	  private String apiKey;
+	  private int timeOut;
 	  
 	  public APIConnector(String apiKey, int timeOut) {
 		    this.apiKey = apiKey;
 		    this.timeOut = timeOut;
 	  }
 	  
-	  public APIConnector() {
-		   
-	  }
 	  
-	  public String getRequest(String apiParameters) throws Exception {
-		    String params = apiParameters;
+	  public String getRequest(String function, String symbol, int interval) throws Exception {
 		    try {
-		      URL request = new URL(BASE_URL + params);
+		      URL request = new URL(URL + "function=" + function + "&symbol=" + symbol + "&interval=" + interval + "min&apikey=" + apiKey);
 		      URLConnection connection = request.openConnection();
 		      connection.setConnectTimeout(timeOut);
 		      connection.setReadTimeout(timeOut);
