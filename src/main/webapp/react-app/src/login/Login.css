@@ -1,0 +1,82 @@
+.login-container {
+    margin-left: calc(50% - 200px);
+    margin-top: 40px;
+    width: 400px;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    padding-bottom: 3px;
+
+}
+
+.login-header {
+    text-align: center;
+    color: white;
+    background-color: #989696;
+    height: 30px;
+    padding-top: 5px;
+    font-size: 20px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.login-wrapper .home-header {
+    background-color: #222;
+    padding: 30px;
+    color: white;
+  }
+
+.login-wrapper .home-title {
+    font-size: 1.5em;
+    display: inline;
+    margin-left: calc(50% - 176px);
+}
+
+.login-container .username-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.login-container .password-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.home-header .back-button {
+    float: left;
+    padding: 5px 10px;
+    background-color: rgb(60, 178, 218);
+    color: white;
+    border-radius: 3px;
+}
+
+.home-header .back-button:hover {
+    background-color: rgb(13, 136, 177);
+}
+
+.login-container .submit-button {
+    float: right;
+    padding: 5px 10px;
+    background-color: rgb(80, 212, 80);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.login-container .submit-button:hover {
+    background-color: rgb(26, 168, 26);
+}
+
+.login-container .register-button {
+    float: left;
+    padding: 5px 10px;
+    background-color: rgb(60, 178, 218);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.login-container .register-button:hover {
+    background-color: rgb(13, 136, 177);
+}

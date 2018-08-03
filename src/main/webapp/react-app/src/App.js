@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
-import './App.css';
+import HomePage from './homePage/HomePage';
+import Login from './login/Login';
+import AppService from './AppService';
 
-class App extends Component {
+export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    Object.keys(AppService).forEach(key => {
+      this[key] = AppService[key].bind(this);
+    });
+
+    this.state = { location: 'home' };
+    
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">CS5200 Project</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload. das dsa
-        </p>
+      <div>
+        { this.state.location === 'home' ? (
+          <HomePage setLocation={this.setLocation} />
+        ) : this.state.location === 'login' ? (
+          <Login setLocation={this.setLocation} />
+        ) : (
+          <div>
+            { this.state.location }
+            <div onClick={() => this.setState({ location: 'home' })} >
+            Click here to go home
+            </div>
+          </div>
+        )}
+
       </div>
+      
     );
   }
 }
-
-export default App;

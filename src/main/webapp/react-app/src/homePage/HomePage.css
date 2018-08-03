@@ -1,0 +1,26 @@
+.home-container {
+
+}
+
+.home-header {
+  background-color: #222;
+  padding: 30px;
+  color: white;
+}
+
+.home-title {
+  font-size: 1.5em;
+  display: inline;
+  margin-left: calc(50% - 120px);
+}
+
+.login-button {
+  float: right;
+  background-color: rgb(60, 178, 218);
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.login-button:hover {
+  background-color: rgb(13, 136, 177);
+}
