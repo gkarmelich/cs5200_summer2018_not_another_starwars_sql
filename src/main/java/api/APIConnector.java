@@ -20,6 +20,7 @@ public class APIConnector {
 	  public String getRequest(String function, String symbol, int interval) throws Exception {
 		    try {
 		      URL request = new URL(URL + "function=" + function + "&symbol=" + symbol + "&interval=" + interval + "min&apikey=" + apiKey);
+		      System.out.println(request.toString());
 		      URLConnection connection = request.openConnection();
 		      connection.setConnectTimeout(timeOut);
 		      connection.setReadTimeout(timeOut);
