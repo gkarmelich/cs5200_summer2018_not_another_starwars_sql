@@ -30,7 +30,7 @@ public class StaffService {
 	}
 	
 	@PostMapping("/staff")
-	public void createActor(@RequestBody Staff staff) {
+	public void createStaff(@RequestBody Staff staff) {
 		staffDao.createStaff(staff.getFirstName(), staff.getLastName(), staff.getUserName(), staff.getPassword(),
 				staff.getEmail(), staff.getDob());
 	}

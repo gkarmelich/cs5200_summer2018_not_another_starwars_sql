@@ -29,7 +29,7 @@ public class CashService {
 	}
 	
 	@PostMapping("/cash")
-	public void createActor(@RequestBody Cash cash) {
+	public void createCash(@RequestBody Cash cash) {
 		cashDao.createCash(cash.getUnitsPurchased(), cash.getUnitPurchasePrice(), cash.getDatePurchased(), cash.getUnitsSold(),
 				cash.getUnitSoldPrice(), cash.getDateSold(), cash.getCurrencyName());
 	}

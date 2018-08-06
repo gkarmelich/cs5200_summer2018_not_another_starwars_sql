@@ -37,14 +37,14 @@ public class TestDaos implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		investorDao.test();
-		managerDao.test();
-		staffDao.test();
+//		investorDao.test();
+//		managerDao.test();
+//		staffDao.test();
 //		phoneDao.test();
 //		addressDao.test();
-		cashDao.test();
-		stockDao.test();
-		
+//		cashDao.test();
+//		stockDao.test();
+//		
 	}
 	
 

@@ -30,7 +30,7 @@ public class InvestorService {
 	}
 	
 	@PostMapping("/investor")
-	public void createActor(@RequestBody Investor investor) {
+	public void createInvestor(@RequestBody Investor investor) {
 		investorDao.createInvestor(investor.getFirstName(), investor.getLastName(), investor.getUserName(), investor.getPassword(),
 				investor.getEmail(), investor.getDob());
 	}

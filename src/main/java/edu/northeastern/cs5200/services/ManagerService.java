@@ -29,7 +29,7 @@ public class ManagerService {
 	}
 	
 	@PostMapping("/manager")
-	public void createActor(@RequestBody Manager manager) {
+	public void createManager(@RequestBody Manager manager) {
 		managerDao.createManager(manager.getFirstName(), manager.getLastName(), manager.getUserName(), manager.getPassword(),
 				manager.getEmail(), manager.getDob());
 	}

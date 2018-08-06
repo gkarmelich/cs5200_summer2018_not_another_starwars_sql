@@ -29,7 +29,7 @@ public class StockService {
 	}
 	
 	@PostMapping("/stock")
-	public void createActor(@RequestBody Stock stock) {
+	public void createStock(@RequestBody Stock stock) {
 		stockDao.createStock(stock.getUnitsPurchased(), stock.getUnitPurchasePrice(), stock.getDatePurchased(), stock.getUnitsSold(),
 				stock.getUnitSoldPrice(), stock.getDateSold(), stock.getSecurityName(), stock.getTicker());
 	}
