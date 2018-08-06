@@ -1,22 +1,47 @@
-package objects;
-import java.util.Collection;
-import java.sql.Date;
+package edu.northeastern.cs5200.objects;
 
+import java.util.List;
+import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPerson;
+	
 	private String firstName;
 	private String lastName;
 	private String userName;
 	private String password;
 	private String email;
 	private Date dob;
-	private Collection<Phone> phones;
-	private Collection<Address> addresses;
 	
-	public User(int idPerson, String firstName, String lastName, String userName, String password, String email,
-			Date dob, Collection<Phone> phones, Collection<Address> addresses) {
+	@ManyToMany(mappedBy="user")
+	@JsonIgnore
+	private List<Phone> phones;
+	
+	@ManyToMany(mappedBy="user")
+	@JsonIgnore
+	private List<Address> addresses;
+
+
+	public User() {
 		super();
-		this.idPerson = idPerson;
+	}
+	
+	public User(String firstName, String lastName, String userName, String password, String email,
+			Date dob, List<Phone> phones, List<Address> addresses) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -83,19 +108,19 @@ public class User {
 		this.dob = dob;
 	}
 
-	public Collection<Phone> getPhones() {
+	public List<Phone> getPhones() {
 		return phones;
 	}
 
-	public void setPhones(Collection<Phone> phones) {
+	public void setPhones(List<Phone> phones) {
 		this.phones = phones;
 	}
 
-	public Collection<Address> getAddresses() {
+	public List<Address> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddresses(Collection<Address> addresses) {
+	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
 

@@ -1,10 +1,12 @@
-package api;
+package edu.northeastern.cs5200.api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+
+
 
 public class APIConnector {
 	  private String URL = "https://www.alphavantage.co/query?";
@@ -15,6 +17,7 @@ public class APIConnector {
 		    this.apiKey = apiKey;
 		    this.timeOut = timeOut;
 	  }
+	  
 	  
 	  
 	  public String getRequest(String function, String symbol, int interval) throws Exception {
