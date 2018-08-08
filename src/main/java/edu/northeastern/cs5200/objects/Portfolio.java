@@ -1,6 +1,9 @@
-package objects;
+package edu.northeastern.cs5200.objects;
 import java.util.Collection;
 
+import javax.persistence.Entity;
+
+//@Entity
 public class Portfolio {
 	private int idPortfolio;
 	private Collection<Asset> assets;

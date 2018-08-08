@@ -1,24 +1,39 @@
-package objects;
+package edu.northeastern.cs5200.objects;
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Asset {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAsset;
 	private int unitsPurchased;
-	private float unitPurchasePrice;
+	private double unitPurchasePrice;
 	private Date datePurchased;
 	private int unitsSold;
-	private float unitSoldPrice;
+	private double unitSoldPrice;
 	private Date dateSold;
 	
-	public Asset(int idAsset, int unitsPurchased, float unitPurchasePrice, Date datePurchased, int unitsSold, float unitSoldPrice, Date dateSold) {
+	public Asset(int unitsPurchased, double unitPurchasePrice, Date datePurchased, int unitsSold, double unitSoldPrice, Date dateSold) {
 		super();
-		this.idAsset = idAsset;
 		this.unitsPurchased = unitsPurchased;
 		this.unitPurchasePrice = unitPurchasePrice;
 		this.datePurchased = datePurchased;
 		this.unitsSold = unitsSold;
 		this.unitSoldPrice = unitSoldPrice;
 		this.dateSold = dateSold;
+	}
+	
+	public Asset() {
+		super();
 	}
 
 	public int getIdAsset() {
@@ -37,11 +52,11 @@ public class Asset {
 		this.unitsPurchased = unitsPurchased;
 	}
 
-	public float getUnitPurchasePrice() {
+	public double getUnitPurchasePrice() {
 		return unitPurchasePrice;
 	}
 
-	public void setUnitPurchasePrice(float unitPurchasePrice) {
+	public void setUnitPurchasePrice(double unitPurchasePrice) {
 		this.unitPurchasePrice = unitPurchasePrice;
 	}
 
@@ -53,11 +68,11 @@ public class Asset {
 		this.unitsSold = unitsSold;
 	}
 
-	public float getUnitSoldPrice() {
+	public double getUnitSoldPrice() {
 		return unitSoldPrice;
 	}
 
-	public void setUnitSoldPrice(float unitSoldPrice) {
+	public void setUnitSoldPrice(double unitSoldPrice) {
 		this.unitSoldPrice = unitSoldPrice;
 	}
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import StockChart from '../stockChart/StockChart';
 import HomePageService from './HomePageService';
 import './HomePage.css';
@@ -16,6 +17,10 @@ export default class HomePage extends Component {
     
   }
 
+  componentWillMount() {
+    axios.get('/api/investor').then(res => this.setState({ investor : res.data }));
+  }
+
   render() {
     return (
       <div className="home-container">
@@ -27,6 +32,9 @@ export default class HomePage extends Component {
         </header>
         <div className="stockChart-container">
           <StockChart />
+        </div>
+        <div>
+          {this.state.investor}
         </div>
       </div>
     );

@@ -1,6 +1,19 @@
-package objects;
+package edu.northeastern.cs5200.objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+@Entity
 public class Address {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAddress;
 	private String street1;
 	private String street2;
@@ -9,14 +22,31 @@ public class Address {
 	private String zip;
 	private boolean primary;
 	
-	public Address(int idAddress, String street1, String street2, String city, String state, String zip, boolean primary) {
-		this.idAddress = idAddress;
+	@ManyToOne
+	@JsonIgnore
+	private User user;
+	
+	public Address() {
+		
+	}
+	
+	public Address(String street1, String street2, String city, String state, String zip, boolean primary, User user) {
 		this.street1 = street1;
 		this.street2 = street2;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
 		this.primary = primary;
+		this.user = user;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getIdAddress() {

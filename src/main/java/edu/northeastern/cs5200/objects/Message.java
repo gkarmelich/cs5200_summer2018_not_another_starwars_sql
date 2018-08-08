@@ -1,5 +1,8 @@
-package objects;
+package edu.northeastern.cs5200.objects;
 
+import javax.persistence.Entity;
+
+//@Entity
 public class Message {
 	private int idMessage;
 	private int idSender;
