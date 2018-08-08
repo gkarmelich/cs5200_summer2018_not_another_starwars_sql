@@ -32,7 +32,7 @@ public class StaffService {
 	@PostMapping("/staff")
 	public void createStaff(@RequestBody Staff staff) {
 		staffDao.createStaff(staff.getFirstName(), staff.getLastName(), staff.getUserName(), staff.getPassword(),
-				staff.getEmail(), staff.getDob());
+				staff.getEmail(), staff.getDob(), staff.getPhones(), staff.getAddresses());
 	}
 
 }

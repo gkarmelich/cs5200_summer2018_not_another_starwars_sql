@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 public class Stock extends Security {
 	private String ticker;
 	
+	public Stock() {
+		
+	}
+	
 	public Stock (int unitsPurchased, double unitPurchasePrice, Date datePurchased, int unitsSold, double unitSoldPrice, Date dateSold, String securityName, String ticker) {
 		super(unitsPurchased, unitPurchasePrice, datePurchased, unitsSold, unitSoldPrice, dateSold, securityName);
 		this.ticker = ticker;

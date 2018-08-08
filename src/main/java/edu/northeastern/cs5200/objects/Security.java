@@ -10,6 +10,10 @@ import javax.persistence.InheritanceType;
 public class Security extends Asset {
 	private String securityName;
 	
+	public Security () {
+		super();
+	}
+	
 	public Security (int unitsPurchased, double unitPurchasePrice, Date datePurchased, int unitsSold, double unitSoldPrice, Date dateSold, String securityName) {
 		super(unitsPurchased, unitPurchasePrice, datePurchased, unitsSold, unitSoldPrice, dateSold);
 		this.securityName = securityName;

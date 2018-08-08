@@ -22,32 +22,19 @@ public class Address {
 	private String zip;
 	private boolean primary;
 	
-	@ManyToOne
-	@JsonIgnore
-	private User user;
-	
 	public Address() {
 		
 	}
 	
-	public Address(String street1, String street2, String city, String state, String zip, boolean primary, User user) {
+	public Address(String street1, String street2, String city, String state, String zip, boolean primary) {
 		this.street1 = street1;
 		this.street2 = street2;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
 		this.primary = primary;
-		this.user = user;
 	}
 
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public int getIdAddress() {
 		return idAddress;

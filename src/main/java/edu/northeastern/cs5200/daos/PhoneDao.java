@@ -20,23 +20,19 @@ public class PhoneDao {
 	@Autowired
 	UserRepo userRepo;
 	
-	public void createPhone(String phone, boolean primary, User user) {
-		Phone p = new Phone(phone, primary, user);
-		List<Phone> phones = new ArrayList<>();
+	public void createPhone(String phone, boolean primary) {
+		Phone p = new Phone(phone, primary);
 		phoneRepo.save(p);
-		phones.add(p);
-		this.updateUserPhone(user.getFirstName(), user.getLastName(), phones);
 	}
 	
-	public void updateUserPhone(String firstName, String lastName, List<Phone> phones) {
-		User user = userRepo.findPersonByName(firstName, lastName);
-		user.setPhones(phones);
-		userRepo.save(user);
+	public List<Phone> findAllPhones() {
+		List<Phone> phones = new ArrayList<>();
+		phones =  (List<Phone>) phoneRepo.findAll();
+		return phones;
 	}
 	
 	public void test() {
-		User user = userRepo.findPersonByName("George", "Karmelich");
-		this.createPhone("555123456", true, user);
+		this.createPhone("555123456", true);
 	}
 
 }

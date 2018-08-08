@@ -31,20 +31,29 @@ public class TestDaos implements CommandLineRunner {
 	@Autowired
 	StockDao stockDao;
 	
+	@Autowired
+	PortfolioDao portfolioDao;
+	
+	@Autowired
+	MessageDao messageDao;
+	
 	public static void main(String[] args) throws Exception {
 		Cs5200ProjectApplication.main(new String[] {});
 	}
 	
 	@Override
 	public void run(String... args) throws Exception {
+
+//		addressDao.test();
+//		phoneDao.test();
 		investorDao.test();
 		managerDao.test();
 		staffDao.test();
-//		phoneDao.test();
-//		addressDao.test();
 		cashDao.test();
 		stockDao.test();
-//		
+		portfolioDao.test();
+		messageDao.test();
+		
 	}
 	
 

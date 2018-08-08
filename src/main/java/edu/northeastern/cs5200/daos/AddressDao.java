@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +20,20 @@ public class AddressDao {
 	@Autowired
 	UserRepo userRepo;
 	
-	public void createAddress(String street1, String street2, String city, String state, String zip, boolean primary, User user) {
-		Address a = new Address(street1, street2, city, state, zip, primary, user);
+	public void createAddress(String street1, String street2, String city, String state, String zip, boolean primary) {
+		Address a = new Address(street1, street2, city, state, zip, primary);
 		addressRepo.save(a);
 	}
 	
-	public void updateUserAddress(String firstName, String lastName, List<Address> addresses) {
-		User user = userRepo.findPersonByName(firstName, lastName);
-		user.setAddresses(addresses);
-		userRepo.save(user);
+	public List<Address> findAllAddresses() {
+		List<Address> address = new ArrayList<>();
+		address =  (List<Address>) addressRepo.findAll();
+		return address;
 	}
 	
+	
 	public void test() {
-		User user = userRepo.findPersonByName("George", "Karmelich");
-		this.createAddress("505 Congress Street", "Unit 3", "Boston", "MA", "02130", true, user);
+		this.createAddress("505 Congress Street", "Unit 3", "Boston", "MA", "02130", true);
 	}
 
 }

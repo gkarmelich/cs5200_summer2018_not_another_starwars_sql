@@ -5,7 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -26,11 +26,11 @@ public class User {
 	private String email;
 	private Date dob;
 	
-	@ManyToMany(mappedBy="user")
+	@OneToMany
 	@JsonIgnore
 	private List<Phone> phones;
 	
-	@ManyToMany(mappedBy="user")
+	@OneToMany
 	@JsonIgnore
 	private List<Address> addresses;
 

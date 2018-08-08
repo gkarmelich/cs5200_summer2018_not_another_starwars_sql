@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-
+import java.util.List;
 
 
 public class APIConnector {
@@ -19,11 +19,11 @@ public class APIConnector {
 	  }
 	  
 	  
-	  
-	  public String getRequest(String function, String symbol, int interval) throws Exception {
+	  public StringBuilder getStockQuotes(String function, List<String> tickerList) throws Exception {
 		    try {
-		      URL request = new URL(URL + "function=" + function + "&symbol=" + symbol + "&interval=" + interval + "min&apikey=" + apiKey);
-		      System.out.println(request.toString());
+
+		      String tickers = String.join(",", tickerList);
+		      URL request = new URL(URL + "function=" + function + "&symbols=" + tickers + "&apikey=" + apiKey);
 		      URLConnection connection = request.openConnection();
 		      connection.setConnectTimeout(timeOut);
 		      connection.setReadTimeout(timeOut);
@@ -37,11 +37,12 @@ public class APIConnector {
 		        responseBuilder.append(line);
 		      }
 		      bufferedReader.close();
-		      System.out.println(responseBuilder.toString());
-		      return responseBuilder.toString();
+		      System.out.println(responseBuilder);
+		      return responseBuilder;
 		    } catch (IOException e) {
 				throw new Exception("failure sending request", e);
 		    }
 		  }
+	  
 
 }
