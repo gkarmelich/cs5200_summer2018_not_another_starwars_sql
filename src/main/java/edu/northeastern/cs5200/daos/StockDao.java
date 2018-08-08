@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.objects.Stock;
+import edu.northeastern.cs5200.repositories.AssetRepo;
+import edu.northeastern.cs5200.repositories.SecurityRepo;
 import edu.northeastern.cs5200.repositories.StockRepo;
 
 @Component
@@ -15,6 +17,12 @@ public class StockDao {
 	
 	@Autowired
 	StockRepo stockRepo;
+	
+	@Autowired
+	SecurityRepo securityRepo;
+	
+	@Autowired
+	AssetRepo assetRepo;
 
 	public void createStock(int unitsPurchased, double unitPurchasePrice, Date datePurchased, int unitsSold, double unitSoldPrice, Date dateSold, String securityName, String ticker) {
 		Stock stock = new Stock(unitsPurchased, unitPurchasePrice, datePurchased, unitsSold, unitSoldPrice, dateSold, securityName, ticker);

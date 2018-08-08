@@ -18,26 +18,14 @@ public class Phone {
 	private String phone;
 	private boolean primary;
 	
-	@ManyToOne
-	@JsonIgnore
-	private User user;
-	
-	public Phone(String phone, boolean primary, User user) {
+	public Phone(String phone, boolean primary) {
 		this.phone = phone;
 		this.primary = primary;
-		this.user = user;
 	}
-
-
-	public User getUser() {
-		return user;
+	
+	public Phone () {
+		
 	}
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 
 	public int getIdPhone() {
 		return idPhone;

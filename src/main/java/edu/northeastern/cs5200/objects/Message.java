@@ -1,20 +1,39 @@
 package edu.northeastern.cs5200.objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.sql.Timestamp;
 
-//@Entity
+@Entity
 public class Message {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMessage;
 	private int idSender;
 	private int idReceiver;
 	private String messageContent;
+	private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	
-	public Message(int idMessage, int idSender, int idReceiver, String messageContent) {
+	public Message(int idSender, int idReceiver, String messageContent) {
 		super();
-		this.idMessage = idMessage;
 		this.idSender = idSender;
 		this.idReceiver = idReceiver;
 		this.messageContent = messageContent;
+	}
+	
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public Message() {
+		
 	}
 
 	public int getIdMessage() {
