@@ -1,6 +1,7 @@
 export default {
     onButtonClick,
-    onLoginButtonClick
+    onLoginButtonClick,
+    onLogoutButtonClick
 }
 
 function onButtonClick() {
@@ -9,4 +10,8 @@ function onButtonClick() {
 
 function onLoginButtonClick() {
     this.props.setLocation('login');
+}
+
+function onLogoutButtonClick() {
+    this.props.setUser(undefined);
 }

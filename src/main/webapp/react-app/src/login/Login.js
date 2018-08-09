@@ -16,6 +16,10 @@ export default class Login extends Component {
     
   }
 
+  componentWillMount() {
+    this.onComponentWillMount();
+  }
+
   render() {
     return (
       <div className="login-wrapper">
@@ -50,6 +54,9 @@ export default class Login extends Component {
           </div>
           <div className="submit-button" onClick={this.submitLogin}>
             Login
+          </div>
+          <div className="error-message">
+            {this.state.errorMessage}
           </div>
 
         </div>

@@ -1,6 +1,7 @@
 export default {
     getLocation,
-    setLocation
+    setLocation,
+    setUser
 }
 
 
@@ -10,4 +11,8 @@ function getLocation() {
 
 function setLocation(location) {
     this.setState({ location });
+}
+
+function setUser(user) {
+    this.setState({ user });
 }

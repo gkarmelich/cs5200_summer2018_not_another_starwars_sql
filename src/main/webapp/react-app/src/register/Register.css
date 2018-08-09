@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     margin-left: calc(50% - 200px);
     margin-top: 40px;
     width: 400px;
@@ -8,7 +8,7 @@
 
 }
 
-.login-header {
+.register-header {
     text-align: center;
     color: white;
     background-color: #989696;
@@ -19,25 +19,25 @@
     border-top-left-radius: 3px;
 }
 
-.login-wrapper .home-header {
+.register-wrapper .home-header {
     background-color: #222;
     padding: 30px;
     color: white;
   }
 
-.login-wrapper .home-title {
+.register-wrapper .home-title {
     font-size: 1.5em;
     display: inline;
     margin-left: calc(50% - 176px);
 }
 
-.login-container .username-textfield {
+.register-container .username-textfield {
     width: calc(100% - 10px);
     box-sizing: border-box;
     margin: 5px;
 }
 
-.login-container .password-textfield {
+.register-container .password-textfield {
     width: calc(100% - 10px);
     box-sizing: border-box;
     margin: 5px;
@@ -55,7 +55,7 @@
     background-color: rgb(13, 136, 177);
 }
 
-.login-container .submit-button {
+.register-container .submit-button {
     float: right;
     padding: 5px 10px;
     background-color: rgb(80, 212, 80);
@@ -64,11 +64,11 @@
     margin-top: 10px;
 }
 
-.login-container .submit-button:hover {
+.register-container .submit-button:hover {
     background-color: rgb(26, 168, 26);
 }
 
-.login-container .register-button {
+.register-container .register-button {
     float: left;
     padding: 5px 10px;
     background-color: rgb(60, 178, 218);
@@ -77,11 +77,21 @@
     margin-top: 10px;
 }
 
-.login-container .register-button:hover {
+.register-container .register-button:hover {
     background-color: rgb(13, 136, 177);
 }
 
-.login-container .error-message {
-    margin-top: 50px;
+.register-container .role-select-wrapper {
+    width: 100%;
+    padding: 0px 5px;
+    box-sizing: border-box;
+}
+
+.register-container .role-select-wrapper label {
+    margin-left: 5px;
+}
+
+.register-container .error-message {
+    margin-top: 22px;
     color: red;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomePage from './homePage/HomePage';
 import Login from './login/Login';
+import Register from './register/Register';
 import AppService from './AppService';
 
 export default class App extends Component {
@@ -20,9 +21,11 @@ export default class App extends Component {
     return (
       <div>
         { this.state.location === 'home' ? (
-          <HomePage setLocation={this.setLocation} />
+          <HomePage setLocation={this.setLocation} user={this.state.user} setUser={this.setUser} />
         ) : this.state.location === 'login' ? (
-          <Login setLocation={this.setLocation} />
+          <Login setLocation={this.setLocation} user={this.state.user} setUser={this.setUser} />
+        ) : this.state.location === 'register' ? (
+          <Register setLocation={this.setLocation} user={this.state.user} setUser={this.setUser} />
         ) : (
           <div>
             { this.state.location }
