@@ -25,7 +25,7 @@ public class Portfolio {
 	@ManyToMany
 	private List<Staff> staff;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	private List<Asset> assets;
 	
 	public Portfolio(List<Asset> assets, Investor investor, Manager manager, List<Staff> staff) {

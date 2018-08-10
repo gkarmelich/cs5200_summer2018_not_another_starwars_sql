@@ -3,6 +3,7 @@ package edu.northeastern.cs5200.daos;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,22 @@ public class StockDao {
 		List<Stock> stock = new ArrayList<>();
 		stock =  (List<Stock>) stockRepo.findAll();
 		return stock;
+	}
+	
+	public void deleteStockById(int id) {
+		Optional<Stock> stock = stockRepo.findById(id);
+		if (stock != null) {
+			Stock s = stock.get();
+			stockRepo.deleteById(s.getIdAsset());
+		}
+	}
+	
+	public Stock findStockById(int id) {
+		Optional<Stock> stock = stockRepo.findById(id);
+		if (stock != null) {
+			return stock.get();
+		}
+		return null;
 	}
 	
 	public void test() {

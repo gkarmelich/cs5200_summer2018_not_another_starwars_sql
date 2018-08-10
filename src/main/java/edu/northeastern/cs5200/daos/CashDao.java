@@ -3,6 +3,7 @@ package edu.northeastern.cs5200.daos;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,6 +31,22 @@ public class CashDao {
 	public void createCash(int unitsPurchased, double unitPurchasePrice, Date datePurchased, int unitsSold, double unitSoldPrice, Date dateSold, String currencyName) {
 		Cash cash = new Cash(unitsPurchased, unitPurchasePrice, datePurchased, unitsSold, unitSoldPrice, dateSold, currencyName);
 		cashRepo.save(cash);
+	}
+	
+	public void deleteCashById(int id) {
+		Optional<Cash> cash = cashRepo.findById(id);
+		if (cash != null) {
+			Cash c = cash.get();
+			cashRepo.deleteById(c.getIdAsset());
+		}
+	}
+	
+	public Cash findCashById(int id) {
+		Optional<Cash> cash = cashRepo.findById(id);
+		if (cash != null) {
+			return cash.get();
+		}
+		return null;
 	}
 	
 	public void test() {

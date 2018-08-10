@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Manager;
-import edu.northeastern.cs5200.objects.Manager;
 import edu.northeastern.cs5200.objects.Phone;
 import edu.northeastern.cs5200.objects.User;
 import edu.northeastern.cs5200.repositories.AddressRepo;
@@ -48,6 +47,22 @@ public class ManagerDao {
 	public Manager findManagerByName(String firstName, String lastName) {
 		User user = userRepo.findPersonByName(firstName, lastName);
 		Optional<Manager> manager = managerRepo.findById(user.getIdPerson());
+		if (manager != null) {
+			return manager.get();
+		}
+		return null;
+	}
+	
+	public void deleteManagerById(int id) {
+		Optional<Manager> manager = managerRepo.findById(id);
+		if (manager != null) {
+			Manager inv = manager.get();
+			managerRepo.deleteById(inv.getIdPerson());
+		}
+	}
+	
+	public Manager findManagerById(int id) {
+		Optional<Manager> manager = managerRepo.findById(id);
 		if (manager != null) {
 			return manager.get();
 		}

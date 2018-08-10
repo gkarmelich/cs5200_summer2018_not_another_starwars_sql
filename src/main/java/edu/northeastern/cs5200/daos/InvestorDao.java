@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Phone;
+import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.objects.User;
 import edu.northeastern.cs5200.repositories.AddressRepo;
 import edu.northeastern.cs5200.repositories.InvestorRepo;
@@ -25,6 +26,9 @@ public class InvestorDao {
 	
 	@Autowired
 	UserRepo userRepo;
+	
+	@Autowired
+	PortfolioDao portfolioDao;
 	
 	public List<Investor> findAllInvestors() {
 		List<Investor> investors = new ArrayList<>();
@@ -41,6 +45,23 @@ public class InvestorDao {
 	public Investor findInvestorByName(String firstName, String lastName) {
 		User user = userRepo.findPersonByName(firstName, lastName);
 		Optional<Investor> investor = investorRepo.findById(user.getIdPerson());
+		if (investor != null) {
+			return investor.get();
+		}
+		return null;
+	}
+	
+	public void deleteInvestorById(int id) {
+		Optional<Investor> investor = investorRepo.findById(id);
+		if (investor != null) {
+			Investor inv = investor.get();
+			portfolioDao.deletePortfolioByInvestor(inv);
+			investorRepo.deleteById(inv.getIdPerson());
+		}
+	}
+	
+	public Investor findInvestorById(int id) {
+		Optional<Investor> investor = investorRepo.findById(id);
 		if (investor != null) {
 			return investor.get();
 		}

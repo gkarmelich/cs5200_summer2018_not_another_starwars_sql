@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Staff;
 import edu.northeastern.cs5200.objects.Phone;
-import edu.northeastern.cs5200.objects.Staff;
 import edu.northeastern.cs5200.objects.User;
 import edu.northeastern.cs5200.repositories.AddressRepo;
 import edu.northeastern.cs5200.repositories.PhoneRepo;
@@ -48,6 +47,22 @@ public class StaffDao {
 	public Staff findStaffByName(String firstName, String lastName) {
 		User user = userRepo.findPersonByName(firstName, lastName);
 		Optional<Staff> staff = staffRepo.findById(user.getIdPerson());
+		if (staff != null) {
+			return staff.get();
+		}
+		return null;
+	}
+	
+	public void deleteStaffById(int id) {
+		Optional<Staff> staff = staffRepo.findById(id);
+		if (staff != null) {
+			Staff inv = staff.get();
+			staffRepo.deleteById(inv.getIdPerson());
+		}
+	}
+	
+	public Staff findStaffById(int id) {
+		Optional<Staff> staff = staffRepo.findById(id);
 		if (staff != null) {
 			return staff.get();
 		}
