@@ -48,9 +48,7 @@ public class StockService {
 	@GetMapping("/stockrequest/{ticker}")
 	public StringBuilder findStockByTicker(@PathVariable("ticker") String ticker) throws Exception {
 		APIConnector request = new APIConnector("LRYEV4NT70I96TDA", 2000);
-		List<String> tickers = new ArrayList<>();
-		tickers.add(ticker);
-		return request.getStockQuotes("BATCH_QUOTES_US", tickers);
+		return request.getStockQuotes(ticker);
 	}
 	
 	@DeleteMapping("/stock/{id}")
