@@ -11,6 +11,9 @@ import edu.northeastern.cs5200.Cs5200ProjectApplication;
 public class TestDaos implements CommandLineRunner {
 	
 	@Autowired
+	AdminDao adminDao;
+	
+	@Autowired
 	InvestorDao investorDao;
 	
 	@Autowired
@@ -46,6 +49,7 @@ public class TestDaos implements CommandLineRunner {
 
 //		addressDao.test();
 //		phoneDao.test();
+		adminDao.test();
 		investorDao.test();
 		managerDao.test();
 		staffDao.test();

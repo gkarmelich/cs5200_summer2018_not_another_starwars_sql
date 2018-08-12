@@ -84,15 +84,17 @@ public class StockDao {
 		this.createStock(5000, 87.55, datePurchased, 0, 0.0, null, "Twitter", "TWTR");
 		this.createStock(100, 87.55, datePurchased, 0, 0.0, null, "Facebook", "FB");
 		
-		RunAPI runAPI = new RunAPI();
-		runAPI.init(tickers);
-		
 		APIConnector request = new APIConnector("LRYEV4NT70I96TDA", 2000);
 		
 		Runnable runnable = new Runnable() {
 			public void run() {
 				try {
-					List<Stock> stocks = request.getBatchStockQuotes(tickers);
+					List<String> allTickers = new ArrayList<>();
+					for (Stock s : findAllStock()) {
+						allTickers.add(s.getTicker());
+						
+					}
+					List<Stock> stocks = request.getBatchStockQuotes(allTickers);
 					for (Stock stock : stocks) {
 						updateStockPrice(stock.getTicker(), stock.getCurrentUnitValue());
 					}
