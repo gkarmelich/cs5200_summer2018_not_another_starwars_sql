@@ -1,10 +1,16 @@
 package edu.northeastern.cs5200.daos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.Cs5200ProjectApplication;
+import edu.northeastern.cs5200.objects.Address;
+import edu.northeastern.cs5200.objects.Phone;
+import edu.northeastern.cs5200.repositories.UserRepo;
 
 
 @Component
@@ -12,6 +18,9 @@ public class TestDaos implements CommandLineRunner {
 	
 	@Autowired
 	AdminDao adminDao;
+	
+	@Autowired
+	UserRepo userRepo;
 	
 	@Autowired
 	InvestorDao investorDao;
@@ -47,8 +56,8 @@ public class TestDaos implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-//		addressDao.test();
-//		phoneDao.test();
+		addressDao.test();
+		phoneDao.test();
 		adminDao.test();
 		investorDao.test();
 		managerDao.test();
@@ -57,6 +66,7 @@ public class TestDaos implements CommandLineRunner {
 		stockDao.test();
 		portfolioDao.test();
 		messageDao.test();
+
 		
 	}
 	

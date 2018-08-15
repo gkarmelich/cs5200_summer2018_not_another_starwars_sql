@@ -11,11 +11,8 @@ import org.springframework.stereotype.Component;
 import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Phone;
-import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.objects.User;
-import edu.northeastern.cs5200.repositories.AddressRepo;
 import edu.northeastern.cs5200.repositories.InvestorRepo;
-import edu.northeastern.cs5200.repositories.PhoneRepo;
 import edu.northeastern.cs5200.repositories.UserRepo;
 
 @Component
@@ -29,6 +26,12 @@ public class InvestorDao {
 	
 	@Autowired
 	PortfolioDao portfolioDao;
+	
+	@Autowired
+	AddressDao addressDao;
+	
+	@Autowired
+	PhoneDao phoneDao;
 	
 	public List<Investor> findAllInvestors() {
 		List<Investor> investors = new ArrayList<>();
@@ -72,6 +75,10 @@ public class InvestorDao {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();
 		List<Address> addresses = new ArrayList<>();
+		phones.add(phoneDao.findPhoneById(2));
+		phones.add(phoneDao.findPhoneById(5));
+		addresses.add(addressDao.findAddressById(2));
+		
 		this.createInvestor("George", "Karmelich", "george", "password1", "gkarmelich@hotmail.com", dob, phones, addresses);
 		
 	}

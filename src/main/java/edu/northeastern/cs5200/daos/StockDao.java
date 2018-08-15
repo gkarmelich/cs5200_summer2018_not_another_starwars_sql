@@ -8,12 +8,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.api.APIConnector;
-import edu.northeastern.cs5200.api.RunAPI;
 import edu.northeastern.cs5200.objects.Stock;
 import edu.northeastern.cs5200.repositories.AssetRepo;
 import edu.northeastern.cs5200.repositories.SecurityRepo;

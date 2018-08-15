@@ -24,6 +24,12 @@ public class AdminDao {
 	@Autowired
 	UserRepo userRepo;
 	
+	@Autowired
+	AddressDao addressDao;
+	
+	@Autowired
+	PhoneDao phoneDao;
+	
 	public List<Admin> findAllAdmins() {
 		List<Admin> admins = new ArrayList<>();
 		admins =  (List<Admin>) adminRepo.findAll();
@@ -65,6 +71,8 @@ public class AdminDao {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();
 		List<Address> addresses = new ArrayList<>();
+		phones.add(phoneDao.findPhoneById(1));
+		addresses.add(addressDao.findAddressById(1));
 		this.createAdmin("Mark", "Karmelich", "mark", "password1", "mkarmelich@hotmail.com", dob, phones, addresses);
 		
 	}

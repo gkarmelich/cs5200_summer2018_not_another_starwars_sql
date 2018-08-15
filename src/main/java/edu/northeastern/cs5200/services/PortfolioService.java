@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.daos.PortfolioDao;
-import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.repositories.PortfolioRepo;
 

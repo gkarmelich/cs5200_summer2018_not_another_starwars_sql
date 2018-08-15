@@ -12,9 +12,7 @@ import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Manager;
 import edu.northeastern.cs5200.objects.Phone;
 import edu.northeastern.cs5200.objects.User;
-import edu.northeastern.cs5200.repositories.AddressRepo;
 import edu.northeastern.cs5200.repositories.ManagerRepo;
-import edu.northeastern.cs5200.repositories.PhoneRepo;
 import edu.northeastern.cs5200.repositories.UserRepo;
 
 @Component
@@ -74,6 +72,8 @@ public class ManagerDao {
 		Date dob = new Date(10000000);
 		List<Phone> phones = new ArrayList<>();
 		List<Address> addresses = new ArrayList<>();
+		phones.add(phoneDao.findPhoneById(3));
+		addresses.add(addressDao.findAddressById(3));
 		this.createManager("Ryan", "Kalla", "rkalla", "password1", "rkalla@hotmail.com", dob, phones, addresses);
 		
 	}

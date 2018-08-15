@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Phone {
@@ -16,11 +14,11 @@ public class Phone {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPhone;
 	private String phone;
-	private boolean primary;
+	private boolean primaryPhone;
 	
-	public Phone(String phone, boolean primary) {
+	public Phone(String phone, boolean primaryPhone) {
 		this.phone = phone;
-		this.primary = primary;
+		this.primaryPhone = primaryPhone;
 	}
 	
 	public Phone () {
@@ -46,11 +44,11 @@ public class Phone {
 	}
 
 	public boolean isPrimary() {
-		return primary;
+		return primaryPhone;
 	}
 
-	public void setPrimary(boolean primary) {
-		this.primary = primary;
+	public void setPrimary(boolean primaryPhone) {
+		this.primaryPhone = primaryPhone;
 	}
 
 }

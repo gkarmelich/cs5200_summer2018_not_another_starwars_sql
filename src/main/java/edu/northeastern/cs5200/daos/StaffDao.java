@@ -12,8 +12,6 @@ import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Staff;
 import edu.northeastern.cs5200.objects.Phone;
 import edu.northeastern.cs5200.objects.User;
-import edu.northeastern.cs5200.repositories.AddressRepo;
-import edu.northeastern.cs5200.repositories.PhoneRepo;
 import edu.northeastern.cs5200.repositories.StaffRepo;
 import edu.northeastern.cs5200.repositories.UserRepo;
 
@@ -73,6 +71,8 @@ public class StaffDao {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();
 		List<Address> addresses = new ArrayList<>();
+		phones.add(phoneDao.findPhoneById(4));
+		addresses.add(addressDao.findAddressById(4));
 		this.createStaff("Jose", "Annunziato", "annunziato", "password1!", "jannunz@hotmail.com", dob, phones, addresses);
 		
 	}
