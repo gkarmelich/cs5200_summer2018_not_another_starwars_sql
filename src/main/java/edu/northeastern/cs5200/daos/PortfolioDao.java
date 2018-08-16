@@ -12,6 +12,7 @@ import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Manager;
 import edu.northeastern.cs5200.objects.Staff;
+import edu.northeastern.cs5200.objects.Trade;
 import edu.northeastern.cs5200.repositories.AssetRepo;
 import edu.northeastern.cs5200.repositories.PortfolioRepo;
 
@@ -34,7 +35,7 @@ public class PortfolioDao {
 	StaffDao staffDao;
 	
 	public void createPortfolio(List<Asset> assets, Investor investor, Manager manager, List<Staff> staff) {
-		Portfolio portfolio = new Portfolio(assets, investor, manager, staff);
+		Portfolio portfolio = new Portfolio(assets, null, investor, manager, staff);
 		portfolioRepo.save(portfolio);
 	}
 	
@@ -72,6 +73,15 @@ public class PortfolioDao {
 		Optional<Portfolio> portfolio = portfolioRepo.findById(id);
 		if (portfolio != null) {
 			return portfolio.get();
+		}
+		return null;
+	}
+	
+	public List<Trade> findTradesByPortfolio(Portfolio portfolio) {
+		Optional<Portfolio> thisPortfolio = portfolioRepo.findById(portfolio.getIdPortfolio());
+		if (thisPortfolio != null) {
+			Portfolio p = thisPortfolio.get();
+			return p.getTrades();
 		}
 		return null;
 	}

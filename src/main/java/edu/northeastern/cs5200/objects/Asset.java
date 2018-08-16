@@ -33,6 +33,7 @@ public class Asset {
 	}
 	
 
+
 	public Asset() {
 		super();
 	}
