@@ -44,8 +44,8 @@ public class MessageDao {
 	}
 	
 	public void test() {
-		this.createMessage(1, 2, "Hi World");
-		this.createMessage(2, 1, "What is this");
+		this.createMessage(3, 2, "Hi World");
+		this.createMessage(2, 3, "What is this");
 		
 	}
 

@@ -12,10 +12,13 @@ export default {
 function onComponentWillMount() {
     this.registeredUsers = [];
     axios.get('/api/investor').then(investorRes => {
+        investorRes.data.forEach(i => i.userType = 'investor');
         this.registeredUsers = this.registeredUsers.concat(investorRes.data);
         axios.get('/api/manager').then(managerRes => {
+            managerRes.data.forEach(m => m.userType = 'manager');
             this.registeredUsers = this.registeredUsers.concat(managerRes.data);
             axios.get('/api/staff').then(staffRes => {
+                staffRes.data.forEach(s => s.userType = 'staff');
                 this.registeredUsers = this.registeredUsers.concat(staffRes.data);
             });
         });
