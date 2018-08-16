@@ -67,19 +67,25 @@ public class TradeDao {
 	
 	public void createBuy(Asset asset, int unitsPurchased) throws Exception {
 		double unitPurchasePrice = 1.0;
+		int unitsHeld = 0;
 		if (asset instanceof Stock) {
 			Stock stock = currentPrice.init(((Stock) asset).getTicker());
 			unitPurchasePrice = stock.getCurrentUnitValue();
 		}
 		Buy buy = new Buy(asset, unitsPurchased, unitPurchasePrice);
 		buyRepo.save(buy);
-		asset.setUnitsPurchased(unitsPurchased);
+		asset.setUnitsPurchased(asset.getUnitsPurchased() + unitsPurchased);
 		asset.setUnitPurchasePrice(unitPurchasePrice);
+		if (asset instanceof Stock) {
+			unitsHeld = asset.getUnitsPurchased() - asset.getUnitsSold();
+			((Stock) asset).setUnitsHeld(unitsHeld);
+		}
 		assetRepo.save(asset);
 	}
 	
 	public void createSell(Asset asset, int unitsSold) throws Exception {
 		double unitSoldPrice = 1.0;
+		int unitsHeld = 0;
 		if (asset instanceof Stock) {
 			Stock stock = currentPrice.init(((Stock) asset).getTicker());
 			unitSoldPrice = stock.getCurrentUnitValue();
@@ -88,6 +94,10 @@ public class TradeDao {
 		sellRepo.save(sell);
 		asset.setUnitsSold(unitsSold);
 		asset.setUnitSoldPrice(unitSoldPrice);
+		if (asset instanceof Stock) {
+			unitsHeld = asset.getUnitsPurchased() - asset.getUnitsSold();
+			((Stock) asset).setUnitsHeld(unitsHeld);
+		}
 		assetRepo.save(asset);
 	}
 	
@@ -100,8 +110,14 @@ public class TradeDao {
 			p.setTrades(trades);
 			portfolioRepo.save(p);
 		}
+		Asset asset = trade.getAsset();
+		if (asset instanceof Stock) {
+			int unitsHeld = ((Stock) asset).getUnitsHeld();
+			if (unitsHeld == 0) {
+				stockDao.deleteStockById(asset.getIdAsset());
+			}
+		}
 	}
-	
 	
 	public void deleteTradeById(int id) {
 		Optional<Trade> trade = tradeRepo.findById(id);
@@ -121,7 +137,7 @@ public class TradeDao {
 		this.updatePortfolioForTrade(trade, portfolio);
 		
 		Asset asset2 = stockDao.findStockById(3);
-		this.createSell(asset2, 75);
+		this.createSell(asset2, 4000);
 		Trade trade2 = this.findAllTrades().get(1);
 		this.updatePortfolioForTrade(trade2, portfolio);
 	}
