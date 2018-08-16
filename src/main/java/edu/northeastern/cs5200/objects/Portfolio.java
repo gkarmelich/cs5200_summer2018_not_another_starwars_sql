@@ -27,8 +27,20 @@ public class Portfolio {
 	@OneToMany(cascade = CascadeType.REMOVE)
 	private List<Asset> assets;
 	
-	public Portfolio(List<Asset> assets, Investor investor, Manager manager, List<Staff> staff) {
+	@OneToMany(cascade = CascadeType.REMOVE)
+	private List<Trade> trades;
+	
+	public List<Trade> getTrades() {
+		return trades;
+	}
+
+	public void setTrades(List<Trade> trades) {
+		this.trades = trades;
+	}
+
+	public Portfolio(List<Asset> assets, List<Trade> trades, Investor investor, Manager manager, List<Staff> staff) {
 		this.assets = assets;
+		this.trades = trades;
 		this.investor = investor;
 		this.manager = manager;
 		this.staff = staff;

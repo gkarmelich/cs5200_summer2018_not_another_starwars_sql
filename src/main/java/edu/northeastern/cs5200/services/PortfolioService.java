@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.daos.PortfolioDao;
 import edu.northeastern.cs5200.objects.Portfolio;
+import edu.northeastern.cs5200.objects.Trade;
 import edu.northeastern.cs5200.repositories.PortfolioRepo;
 
 @RestController
@@ -30,6 +31,7 @@ public class PortfolioService {
 		return portfolioDao.findAllPortfolios();
 	}
 	
+	
 	@PostMapping("/portfolio")
 	public void createPortfolio(@RequestBody Portfolio portfolio) {
 		portfolioDao.createPortfolio(portfolio.getAssets(), portfolio.getInvestor(), portfolio.getManager(), portfolio.getStaff());
@@ -38,6 +40,11 @@ public class PortfolioService {
 	@GetMapping("/portfolio/{id}")
 	public Portfolio findPortfolioById(@PathVariable("id") int id) {
 		return portfolioDao.findPortfolioById(id);
+	}
+	
+	@GetMapping("/portfolio/{id}/trades")
+	public List<Trade> findAllTradesByPortfolio(@PathVariable("id") int id) {
+		return portfolioDao.findTradesByPortfolio(portfolioDao.findPortfolioById(id));
 	}
 	
 	@DeleteMapping("/portfolio/{id}")

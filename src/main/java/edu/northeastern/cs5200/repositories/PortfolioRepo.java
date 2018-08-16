@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
@@ -14,6 +15,7 @@ public interface PortfolioRepo extends CrudRepository<Portfolio, Integer>{
 	@Query("SELECT x FROM Portfolio x WHERE x.investor=:investor")
 	Optional<Portfolio> findPortfolioByInvestor (
 			@Param("investor") Investor investor);
+	
 
 
 }

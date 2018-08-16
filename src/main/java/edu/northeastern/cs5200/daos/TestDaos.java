@@ -8,8 +8,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.Cs5200ProjectApplication;
+import edu.northeastern.cs5200.api.RunAPI;
 import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Phone;
+import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.repositories.UserRepo;
 
 
@@ -49,6 +51,9 @@ public class TestDaos implements CommandLineRunner {
 	@Autowired
 	MessageDao messageDao;
 	
+	@Autowired
+	TradeDao tradeDao;
+	
 	public static void main(String[] args) throws Exception {
 		Cs5200ProjectApplication.main(new String[] {});
 	}
@@ -66,8 +71,7 @@ public class TestDaos implements CommandLineRunner {
 		stockDao.test();
 		portfolioDao.test();
 		messageDao.test();
-
-		
+		tradeDao.test();
 	}
 	
 
