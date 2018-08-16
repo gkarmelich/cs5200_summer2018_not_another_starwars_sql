@@ -32,7 +32,7 @@ public class MessageService {
 	
 	@PostMapping("/message")
 	public void createMessage(@RequestBody Message message) {
-		messageDao.createMessage(message.getIdSender(), message.getIdSender(), message.getMessageContent());
+		messageDao.createMessage(message.getIdSender(), message.getIdReceiver(), message.getMessageContent());
 	}
 	
 	@GetMapping("/message/{id}")

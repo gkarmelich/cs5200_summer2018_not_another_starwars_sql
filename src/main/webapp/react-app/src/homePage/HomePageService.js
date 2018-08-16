@@ -1,11 +1,24 @@
+import axios from 'axios';
+
 export default {
-    onButtonClick,
+    onComponentWillMount,
+
     onLoginButtonClick,
-    onLogoutButtonClick
+    onLogoutButtonClick,
+    onProfileButtonClick
 }
 
-function onButtonClick() {
-    this.props.setLocation('Not Home!');
+function onComponentWillMount() {
+    if (this.props.user) {
+        axios.get('/api/portfolio').then(portfolios => {
+            const myPortfolios = portfolios.data.filter(p => p.investor.idPerson === this.props.user.idPerson);
+            const myManagedPortfolios = portfolios.data.filter(p => p.manager.idPerson === this.props.user.idPerson);
+            const myStaffedPortfolios = portfolios.data.filter(p => p.staff.includes(s => s.idPerson === this.props.user.idPerson));
+            const myPortfolio = myPortfolios.length === 0 ? null : myPortfolios[0];
+            this.setState({ myPortfolio, myManagedPortfolios, myStaffedPortfolios });
+            console.log(myPortfolio);
+        });
+    }
 }
 
 function onLoginButtonClick() {
@@ -14,4 +27,8 @@ function onLoginButtonClick() {
 
 function onLogoutButtonClick() {
     this.props.setUser(undefined);
+}
+
+function onProfileButtonClick() {
+    this.props.setLocation('profile');
 }

@@ -1,0 +1,97 @@
+.register-container {
+    margin-left: calc(50% - 200px);
+    margin-top: 40px;
+    width: 400px;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    padding-bottom: 3px;
+
+}
+
+.register-header {
+    text-align: center;
+    color: white;
+    background-color: #989696;
+    height: 30px;
+    padding-top: 5px;
+    font-size: 20px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.register-wrapper .home-header {
+    background-color: #222;
+    padding: 30px;
+    color: white;
+  }
+
+.register-wrapper .home-title {
+    font-size: 1.5em;
+    display: inline;
+    margin-left: calc(50% - 176px);
+}
+
+.register-container .username-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.register-container .password-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.home-header .back-button {
+    float: left;
+    padding: 5px 10px;
+    background-color: rgb(60, 178, 218);
+    color: white;
+    border-radius: 3px;
+}
+
+.home-header .back-button:hover {
+    background-color: rgb(13, 136, 177);
+}
+
+.register-container .submit-button {
+    float: right;
+    padding: 5px 10px;
+    background-color: rgb(80, 212, 80);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.register-container .submit-button:hover {
+    background-color: rgb(26, 168, 26);
+}
+
+.register-container .register-button {
+    float: left;
+    padding: 5px 10px;
+    background-color: rgb(60, 178, 218);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.register-container .register-button:hover {
+    background-color: rgb(13, 136, 177);
+}
+
+.register-container .role-select-wrapper {
+    width: 100%;
+    padding: 0px 5px;
+    box-sizing: border-box;
+}
+
+.register-container .role-select-wrapper label {
+    margin-left: 5px;
+}
+
+.register-container .error-message {
+    margin-top: 22px;
+    color: red;
+}

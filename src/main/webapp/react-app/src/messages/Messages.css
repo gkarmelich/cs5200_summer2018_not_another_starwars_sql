@@ -1,0 +1,34 @@
+.messages-wrapper {
+    height: 200px;
+}
+
+.messages-wrapper .people-list {
+    width: 25%;
+    float: left;
+}
+
+.messages-wrapper .messages {
+    width: 75%;
+    float: right;
+}
+
+.messages-wrapper .messages .selected-messages-wrapper {
+    height: 150px;
+    overflow: auto;
+}
+
+.messages-wrapper .messages .selected-messages-wrapper .message .message-sender {
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.messages-wrapper .messages .input-wrapper {
+    height: 50px;
+}
+
+.messages-wrapper .people-list .person {
+    cursor: pointer;
+}
+.messages-wrapper .people-list .person.selected {
+    background-color: lightgrey;
+}
