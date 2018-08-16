@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -20,19 +18,19 @@ public class Address {
 	private String city;
 	private String state;
 	private String zip;
-	private boolean primary;
+	private boolean primaryPhone;
 	
 	public Address() {
 		
 	}
 	
-	public Address(String street1, String street2, String city, String state, String zip, boolean primary) {
+	public Address(String street1, String street2, String city, String state, String zip, boolean primaryPhone) {
 		this.street1 = street1;
 		this.street2 = street2;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.primary = primary;
+		this.primaryPhone = primaryPhone;
 	}
 
 
@@ -85,11 +83,11 @@ public class Address {
 	}
 
 	public boolean isPrimary() {
-		return primary;
+		return primaryPhone;
 	}
 
-	public void setPrimary(boolean primary) {
-		this.primary = primary;
+	public void setPrimary(boolean primaryPhone) {
+		this.primaryPhone = primaryPhone;
 	}
 
 }

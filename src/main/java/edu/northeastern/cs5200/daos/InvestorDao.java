@@ -12,9 +12,7 @@ import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Phone;
 import edu.northeastern.cs5200.objects.User;
-import edu.northeastern.cs5200.repositories.AddressRepo;
 import edu.northeastern.cs5200.repositories.InvestorRepo;
-import edu.northeastern.cs5200.repositories.PhoneRepo;
 import edu.northeastern.cs5200.repositories.UserRepo;
 
 @Component
@@ -25,6 +23,15 @@ public class InvestorDao {
 	
 	@Autowired
 	UserRepo userRepo;
+	
+	@Autowired
+	PortfolioDao portfolioDao;
+	
+	@Autowired
+	AddressDao addressDao;
+	
+	@Autowired
+	PhoneDao phoneDao;
 	
 	public List<Investor> findAllInvestors() {
 		List<Investor> investors = new ArrayList<>();
@@ -47,10 +54,31 @@ public class InvestorDao {
 		return null;
 	}
 	
+	public void deleteInvestorById(int id) {
+		Optional<Investor> investor = investorRepo.findById(id);
+		if (investor != null) {
+			Investor inv = investor.get();
+			portfolioDao.deletePortfolioByInvestor(inv);
+			investorRepo.deleteById(inv.getIdPerson());
+		}
+	}
+	
+	public Investor findInvestorById(int id) {
+		Optional<Investor> investor = investorRepo.findById(id);
+		if (investor != null) {
+			return investor.get();
+		}
+		return null;
+	}
+	
 	public void test() {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();
 		List<Address> addresses = new ArrayList<>();
+		phones.add(phoneDao.findPhoneById(2));
+		phones.add(phoneDao.findPhoneById(5));
+		addresses.add(addressDao.findAddressById(2));
+		
 		this.createInvestor("George", "Karmelich", "george", "password1", "gkarmelich@hotmail.com", dob, phones, addresses);
 		
 	}

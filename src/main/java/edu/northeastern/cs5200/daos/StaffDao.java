@@ -11,10 +11,7 @@ import org.springframework.stereotype.Component;
 import edu.northeastern.cs5200.objects.Address;
 import edu.northeastern.cs5200.objects.Staff;
 import edu.northeastern.cs5200.objects.Phone;
-import edu.northeastern.cs5200.objects.Staff;
 import edu.northeastern.cs5200.objects.User;
-import edu.northeastern.cs5200.repositories.AddressRepo;
-import edu.northeastern.cs5200.repositories.PhoneRepo;
 import edu.northeastern.cs5200.repositories.StaffRepo;
 import edu.northeastern.cs5200.repositories.UserRepo;
 
@@ -54,10 +51,28 @@ public class StaffDao {
 		return null;
 	}
 	
+	public void deleteStaffById(int id) {
+		Optional<Staff> staff = staffRepo.findById(id);
+		if (staff != null) {
+			Staff inv = staff.get();
+			staffRepo.deleteById(inv.getIdPerson());
+		}
+	}
+	
+	public Staff findStaffById(int id) {
+		Optional<Staff> staff = staffRepo.findById(id);
+		if (staff != null) {
+			return staff.get();
+		}
+		return null;
+	}
+	
 	public void test() {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();
 		List<Address> addresses = new ArrayList<>();
+		phones.add(phoneDao.findPhoneById(4));
+		addresses.add(addressDao.findAddressById(4));
 		this.createStaff("Jose", "Annunziato", "annunziato", "password1!", "jannunz@hotmail.com", dob, phones, addresses);
 		
 	}

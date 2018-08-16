@@ -2,6 +2,8 @@ package edu.northeastern.cs5200.objects;
 
 import java.util.List;
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -26,11 +28,11 @@ public class User {
 	private String email;
 	private Date dob;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private List<Phone> phones;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private List<Address> addresses;
 

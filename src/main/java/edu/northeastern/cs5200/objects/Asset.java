@@ -32,6 +32,7 @@ public class Asset {
 		this.dateSold = dateSold;
 	}
 	
+
 	public Asset() {
 		super();
 	}
