@@ -20,6 +20,7 @@ export default class HomePage extends Component {
 
 
   render() {
+    axios.get('/api/portfolio').then(res => console.log(res.data));
     return (
       <div className="home-container">
         {this.props.user ? (
