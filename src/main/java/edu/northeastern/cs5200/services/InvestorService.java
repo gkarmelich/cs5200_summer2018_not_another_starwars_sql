@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,11 @@ public class InvestorService {
 	@DeleteMapping("/investor/{id}")
 	public void deleteInvestor(@PathVariable("id") int id) {
 		investorDao.deleteInvestorById(id);
+	}
+	
+	@PutMapping("/investor/{id}")
+	public void updateInvestor(@PathVariable("id") int id, @RequestBody Investor investor) {
+		investorDao.updateInvestor(investor, investor.getFirstName(), investor.getLastName(), investor.getUserName(), investor.getPassword(), investor.getEmail(), investor.getDob());
 	}
 	
 }
