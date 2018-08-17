@@ -55,7 +55,7 @@ export default class HomePage extends Component {
           ) : this.props.user.userType === 'manager' ? (
             <div>
               <h2 className="portfolio-title">My Managed Portfolios</h2>
-              {this.state.myManagedPortfolios.map(p => <div>{p.investor.firstName}</div>)}
+              {this.state.myManagedPortfolios.map(p => <div className="managed">{p.investor.firstName} {p.investor.lastName}</div>)}
             </div>
           ) : (
             <div> staff </div>

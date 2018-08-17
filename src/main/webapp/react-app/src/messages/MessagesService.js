@@ -12,7 +12,6 @@ export default {
 
 function onComponentWillMount() {
     axios.get('/api/message').then(res => {
-        console.log(res.data);
         const messages = res.data.filter(m => m.idSender === this.props.user.idPerson || m.idReceiver === this.props.user.idPerson);
         this.setState({ messages });
     });
