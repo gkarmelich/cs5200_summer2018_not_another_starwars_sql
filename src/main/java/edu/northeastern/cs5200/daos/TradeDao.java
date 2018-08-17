@@ -137,7 +137,7 @@ public class TradeDao {
 		this.updatePortfolioForTrade(trade, portfolio);
 		
 		Asset asset2 = stockDao.findStockById(3);
-		this.createSell(asset2, 4000);
+		this.createSell(asset2, 5000);
 		Trade trade2 = this.findAllTrades().get(1);
 		this.updatePortfolioForTrade(trade2, portfolio);
 	}

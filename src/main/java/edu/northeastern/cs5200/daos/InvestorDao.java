@@ -71,6 +71,19 @@ public class InvestorDao {
 		return null;
 	}
 	
+	public void updateInvestor(Investor investor, String firstName, String lastName, String userName, String password, String email, Date dob) {
+		investor = this.findInvestorById(investor.getIdPerson());
+		if (investor != null) {
+			investor.setFirstName(firstName);
+			investor.setLastName(lastName);
+			investor.setUserName(userName);
+			investor.setPassword(password);
+			investor.setEmail(email);
+			investor.setDob(dob);
+		}
+		userRepo.save(investor);
+	}
+	
 	public void test() {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();

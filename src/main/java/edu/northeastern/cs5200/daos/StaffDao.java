@@ -67,6 +67,19 @@ public class StaffDao {
 		return null;
 	}
 	
+	public void updateStaff(Staff staff, String firstName, String lastName, String userName, String password, String email, Date dob) {
+		staff = this.findStaffById(staff.getIdPerson());
+		if (staff != null) {
+			staff.setFirstName(firstName);
+			staff.setLastName(lastName);
+			staff.setUserName(userName);
+			staff.setPassword(password);
+			staff.setEmail(email);
+			staff.setDob(dob);
+		}
+		userRepo.save(staff);
+	}
+	
 	public void test() {
 		Date dob = new Date(100000000);
 		List<Phone> phones = new ArrayList<>();

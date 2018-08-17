@@ -51,6 +51,19 @@ public class AdminDao {
 		return null;
 	}
 	
+	public void updateAdmin(Admin admin, String firstName, String lastName, String userName, String password, String email, Date dob) {
+		admin = this.findAdminById(admin.getIdPerson());
+		if (admin != null) {
+			admin.setFirstName(firstName);
+			admin.setLastName(lastName);
+			admin.setUserName(userName);
+			admin.setPassword(password);
+			admin.setEmail(email);
+			admin.setDob(dob);
+		}
+		userRepo.save(admin);
+	}
+	
 	public void deleteAdminById(int id) {
 		Optional<Admin> admin = adminRepo.findById(id);
 		if (admin != null) {

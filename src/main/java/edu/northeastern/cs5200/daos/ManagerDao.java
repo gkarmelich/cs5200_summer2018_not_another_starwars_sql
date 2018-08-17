@@ -67,6 +67,19 @@ public class ManagerDao {
 		return null;
 	}
 	
+	public void updateManager(Manager manager, String firstName, String lastName, String userName, String password, String email, Date dob) {
+		manager = this.findManagerById(manager.getIdPerson());
+		if (manager != null) {
+			manager.setFirstName(firstName);
+			manager.setLastName(lastName);
+			manager.setUserName(userName);
+			manager.setPassword(password);
+			manager.setEmail(email);
+			manager.setDob(dob);
+		}
+		userRepo.save(manager);
+	}
+	
 	
 	public void test() {
 		Date dob = new Date(10000000);
