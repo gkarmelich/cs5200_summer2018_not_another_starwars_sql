@@ -65,7 +65,7 @@ public class TradeDao {
 	}
 	
 	
-	public void createBuy(Asset asset, int unitsPurchased) throws Exception {
+	public void createBuy(Stock asset, int unitsPurchased) throws Exception {
 		double unitPurchasePrice = 1.0;
 		int unitsHeld = 0;
 		if (asset instanceof Stock) {
@@ -83,7 +83,7 @@ public class TradeDao {
 		assetRepo.save(asset);
 	}
 	
-	public void createSell(Asset asset, int unitsSold) throws Exception {
+	public void createSell(Stock asset, int unitsSold) throws Exception {
 		double unitSoldPrice = 1.0;
 		int unitsHeld = 0;
 		if (asset instanceof Stock) {
@@ -110,7 +110,7 @@ public class TradeDao {
 			p.setTrades(trades);
 			portfolioRepo.save(p);
 		}
-		Asset asset = trade.getAsset();
+		Asset asset = trade.getStock();
 		if (asset instanceof Stock) {
 			int unitsHeld = ((Stock) asset).getUnitsHeld();
 			if (unitsHeld == 0) {
@@ -129,17 +129,17 @@ public class TradeDao {
 	
 	
 	public void test() throws Exception {
-		Asset asset = stockDao.findStockById(2);
+		Stock asset = stockDao.findStockById(2);
 		this.createBuy(asset, 100);
 		Trade trade = this.findAllTrades().get(0);
 		Portfolio portfolio = portfolioDao.findPortfolioById(1);
 	
 		this.updatePortfolioForTrade(trade, portfolio);
 		
-		Asset asset2 = stockDao.findStockById(3);
-		this.createSell(asset2, 5000);
-		Trade trade2 = this.findAllTrades().get(1);
-		this.updatePortfolioForTrade(trade2, portfolio);
+//		Asset asset2 = stockDao.findStockById(3);
+//		this.createSell(asset2, 5000);
+//		Trade trade2 = this.findAllTrades().get(1);
+//		this.updatePortfolioForTrade(trade2, portfolio);
 	}
 
 }

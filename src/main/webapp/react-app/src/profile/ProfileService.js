@@ -28,6 +28,7 @@ function submitUpdate() {
         this.setState({ errorMessage: 'Enter a password' });
     } else {
         let requestBody = {
+            idPerson: this.props.user.idPerson,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             userName: this.props.user.userName,
@@ -35,8 +36,10 @@ function submitUpdate() {
             email: this.state.email,
             dob: this.state.dob,
             phones: this.state.phones,
-            addresses: this.state.addresses
+            addresses: this.state.addresses,
+            userType: this.props.user.userType
         }
+        this.props.setUser(requestBody);
         switch (this.props.user.userType) {
             case 'investor':
                 axios.put('/api/investor/' + this.props.user.idPerson, requestBody).then(() => this.props.setLocation('home'));

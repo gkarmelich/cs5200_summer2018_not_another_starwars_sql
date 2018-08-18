@@ -1,0 +1,46 @@
+.admin-container {
+    margin-left: calc(50% - 200px);
+    margin-top: 40px;
+    width: 400px;
+
+}
+
+.admin-container .username-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.admin-container .save-button {
+    float: right;
+    padding: 5px 10px;
+    background-color: rgb(80, 212, 80);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.admin-container .delete-button {
+    float: right;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.admin-container .user-container {
+    height: 50px;
+    width: 100%;
+}
+
+.admin-container .user {
+    float: left;
+    padding-top: 15px;
+}
+
+.admin-container .role-select-wrapper {
+    float: right;
+    margin-right: 20px;
+    width: 145px;
+}

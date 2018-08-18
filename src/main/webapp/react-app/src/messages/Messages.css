@@ -1,5 +1,6 @@
 .messages-wrapper {
     height: 200px;
+    border: 1px solid black;
 }
 
 .messages-wrapper .people-list {
@@ -10,6 +11,12 @@
 .messages-wrapper .messages {
     width: 75%;
     float: right;
+    border-left: 1px solid black;
+    box-sizing: border-box;
+}
+
+.messages-wrapper .messages input {
+    width: 75%;
 }
 
 .messages-wrapper .messages .selected-messages-wrapper {

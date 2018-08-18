@@ -6,14 +6,14 @@ import javax.persistence.Entity;
 @Entity
 public class Buy extends Trade {
 	private int unitsPurchased; 
-	private double unitPurchasePrice; 
+	private double unitPurchasePrice;
 	
 	public Buy() {
 		super();
 	}
 	
-	public Buy(Asset asset, int unitsPurchased, double unitPurchasePrice) {
-		super(asset);
+	public Buy(Stock stock, int unitsPurchased, double unitPurchasePrice) {
+		super(stock);
 		this.unitsPurchased = unitsPurchased;
 		this.unitPurchasePrice = unitPurchasePrice;
 		
@@ -35,4 +35,5 @@ public class Buy extends Trade {
 		this.unitPurchasePrice = unitPurchasePrice;
 	}
 
+	
 }

@@ -18,11 +18,11 @@ public class Trade {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idTrade;
 	@ManyToOne
-	private Asset asset;
+	private Stock stock;
 	private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	
-	public Trade(Asset asset) {
-		this.asset = asset;
+	public Trade(Stock stock) {
+		this.stock = stock;
 	}
 	
 	public Trade() {
@@ -37,12 +37,12 @@ public class Trade {
 		this.idTrade = idTrade;
 	}
 
-	public Asset getAsset() {
-		return asset;
+	public Stock getStock() {
+		return stock;
 	}
 
-	public void setAsset(Asset asset) {
-		this.asset = asset;
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 
 	public Timestamp getTimestamp() {

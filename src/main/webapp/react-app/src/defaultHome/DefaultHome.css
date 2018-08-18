@@ -1,0 +1,19 @@
+.default-container {
+
+}
+
+.default-container .ticker-textfield {
+    width: 200px;
+    margin-left: calc(50% - 100px);
+}
+
+.default-container .search-button {
+    padding: 5px 10px;
+    background-color: rgb(54, 22, 240);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+    width: 53px;
+    margin-left: calc(50% - 26px);
+    cursor: pointer;
+}

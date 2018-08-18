@@ -11,8 +11,8 @@ public class Sell extends Trade {
 		super();
 	}
 	
-	public Sell(Asset asset, int unitsSold, double unitSoldPrice) {
-		super(asset);
+	public Sell(Stock stock, int unitsSold, double unitSoldPrice) {
+		super(stock);
 		this.unitsSold = unitsSold;
 		this.unitSoldPrice = unitSoldPrice;
 		

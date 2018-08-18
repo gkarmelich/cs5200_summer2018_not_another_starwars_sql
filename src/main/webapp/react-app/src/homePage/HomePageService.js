@@ -5,7 +5,9 @@ export default {
 
     onLoginButtonClick,
     onLogoutButtonClick,
-    onProfileButtonClick
+    onProfileButtonClick,
+    isAdminUser,
+    onAdminButtonClick
 }
 
 function onComponentWillMount() {
@@ -15,11 +17,9 @@ function onComponentWillMount() {
             const myManagedPortfolios = portfolios.data.filter(p => p.manager.idPerson === this.props.user.idPerson);
             const myStaffedPortfolios = portfolios.data.filter(p => p.staff.find(s => s.idPerson === this.props.user.idPerson) !== undefined);
             const myPortfolio = myPortfolios.length === 0 ? null : myPortfolios[0];
-            this.setState({ myPortfolio, myManagedPortfolios, myStaffedPortfolios });
-            console.log(myPortfolio);
-            console.log('staffed');
-            console.log(myStaffedPortfolios);
-        });
+            this.setState({ allPortfolios: portfolios.data, myPortfolio, myManagedPortfolios, myStaffedPortfolios });
+
+        }).catch(error => console.log(error));
     }
 }
 
@@ -33,4 +33,12 @@ function onLogoutButtonClick() {
 
 function onProfileButtonClick() {
     this.props.setLocation('profile');
+}
+
+function isAdminUser() {
+    return this.props.user && this.props.user.userName === 'admin';
+}
+
+function onAdminButtonClick() {
+    this.props.setLocation('admin');
 }

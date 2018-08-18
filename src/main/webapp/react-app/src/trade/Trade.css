@@ -1,0 +1,33 @@
+.trade-container {
+    width: 400px;
+    margin-left: calc(50% - 200px);
+}
+
+.trade-container .username-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.trade-container .username-textfield {
+    width: calc(100% - 10px);
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.trade-container .submit-button {
+    float: right;
+    padding: 5px 10px;
+    background-color: rgb(80, 212, 80);
+    color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.trade-container .error-message {
+    color: red;
+}
+
+.trade-container .success-message {
+    color: rgb(54, 236, 9);
+}

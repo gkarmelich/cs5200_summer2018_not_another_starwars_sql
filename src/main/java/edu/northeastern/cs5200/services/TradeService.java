@@ -37,12 +37,12 @@ public class TradeService {
 	
 	@PostMapping("/buy")
 	public void createBuy(@RequestBody Buy buy) throws Exception {
-		tradeDao.createBuy(buy.getAsset(), buy.getUnitsPurchased());
+		tradeDao.createBuy(buy.getStock(), buy.getUnitsPurchased());
 	}
 	
 	@PostMapping("/sell")
 	public void createSell(@RequestBody Sell sell) throws Exception {
-		tradeDao.createSell(sell.getAsset(), sell.getUnitsSold());
+		tradeDao.createSell(sell.getStock(), sell.getUnitsSold());
 	}
 	
 	@GetMapping("/trade/{id}")

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import StockChart from '../stockChart/StockChart';
+import DefaultHome from '../defaultHome/DefaultHome';
 import Messages from '../messages/Messages';
+import Trade from '../trade/Trade';
 import HomePageService from './HomePageService';
 import './HomePage.css';
 
@@ -23,7 +25,6 @@ export default class HomePage extends Component {
   }
 
   render() {
-    console.log(this.props.user);
     return (
       <div className="home-container">
         {this.props.user ? (
@@ -35,6 +36,10 @@ export default class HomePage extends Component {
             <div className="login-button" onClick={this.onLogoutButtonClick}>
               Logout
             </div>
+            {this.isAdminUser() && <div className="admin-button" onClick={this.onAdminButtonClick}>
+              Admin
+            </div>
+            }
           </header>
         ) : (
           <header className="home-header">
@@ -46,7 +51,7 @@ export default class HomePage extends Component {
         )}
         <div className="stockChart-container">
           {this.props.user == null ? (
-            <StockChart />
+            <DefaultHome />
           ) : this.props.user.userType === 'investor' ? (
             <div>
               <h2 className="portfolio-title">My Portfolio</h2>
@@ -55,7 +60,7 @@ export default class HomePage extends Component {
           ) : this.props.user.userType === 'manager' ? (
             <div>
               <h2 className="portfolio-title">My Managed Portfolios</h2>
-              {this.state.myManagedPortfolios.map(p => <div className="managed">{p.investor.firstName} {p.investor.lastName}</div>)}
+              {this.state.myManagedPortfolios.map(p => <div className="managed">{p.investor.firstName} {p.investor.lastName} ({p.investor.userName})</div>)}
             </div>
           ) : (
             <div> staff </div>
@@ -66,6 +71,12 @@ export default class HomePage extends Component {
           <h2 className="messages-title">My Messages</h2>
           <Messages user={this.props.user} myPortfolio={this.state.myPortfolio} myManagedPortfolios={this.state.myManagedPortfolios} myStaffedPortfolios={this.state.myStaffedPortfolios} />
         </div> }
+
+        {this.props.user && this.props.user.userType === 'manager' && <div className="trade-wrapper">
+          <h2 className="trade-title">Conduct Trade</h2>
+          <Trade user={this.props.user} myManagedPortfolios={this.state.myManagedPortfolios} allPortfolios={this.state.allPortfolios} />
+        </div>
+        }
       </div>
     );
   }

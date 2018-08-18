@@ -53,7 +53,8 @@ function onAssetClick(event) {
 
 function totalAssetValue(asset) {
     const currentValue = asset.currencyName !== undefined ? asset.unitPurchasePrice : asset.currentUnitValue;
-    return currentValue * asset.unitsPurchased;
+    const totalValue = currentValue * ( asset.currencyName !== undefined ? asset.unitsPurchased : asset.unitsHeld );
+    return totalValue;
 }
 
 function onSearchChange(event) {

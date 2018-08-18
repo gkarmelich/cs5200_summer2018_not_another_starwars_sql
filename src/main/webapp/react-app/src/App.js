@@ -3,6 +3,7 @@ import HomePage from './homePage/HomePage';
 import Login from './login/Login';
 import Register from './register/Register';
 import Profile from './profile/Profile';
+import Admin from './admin/Admin';
 import AppService from './AppService';
 
 export default class App extends Component {
@@ -29,6 +30,8 @@ export default class App extends Component {
           <Register setLocation={this.setLocation} user={this.state.user} setUser={this.setUser} />
         ) : this.state.location === 'profile' ? (
           <Profile setLocation={this.setLocation} user={this.state.user} setUser={this.setUser} />
+        ) : this.state.location === 'admin' ? (
+          <Admin setLocation={this.setLocation} user={this.state.user} setUser={this.setUser} />
         ) : (
           <div>
             { this.state.location }

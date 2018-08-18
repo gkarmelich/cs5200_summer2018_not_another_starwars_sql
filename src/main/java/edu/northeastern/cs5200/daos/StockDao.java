@@ -30,7 +30,7 @@ public class StockDao {
 	AssetRepo assetRepo;
 
 	public void createStock(int unitsPurchased, double unitPurchasePrice, Date datePurchased, int unitsSold, double unitSoldPrice, Date dateSold, String securityName, String ticker) {
-		Stock stock = new Stock(unitsPurchased, unitPurchasePrice, datePurchased, unitsSold, unitSoldPrice, dateSold, securityName, 0, 0.0, ticker);
+		Stock stock = new Stock(unitsPurchased, unitPurchasePrice, datePurchased, unitsSold, unitSoldPrice, dateSold, securityName, unitsPurchased - unitsSold, 0.0, ticker);
 		stockRepo.save(stock);
 	}
 	
