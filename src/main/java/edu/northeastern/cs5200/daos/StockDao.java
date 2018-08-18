@@ -95,6 +95,7 @@ public class StockDao {
 					List<Stock> stocks = request.getBatchStockQuotes(allTickers);
 					for (Stock stock : stocks) {
 						updateStockPrice(stock.getTicker(), stock.getCurrentUnitValue());
+						
 					}
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.daos;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +47,9 @@ public class TradeDao {
 	@Autowired
 	StockDao stockDao;
 	
+	@Autowired
+	CashDao cashDao;
+	
 	RunAPI currentPrice = new RunAPI();
 	
 	
@@ -68,14 +72,20 @@ public class TradeDao {
 	public void createBuy(Stock asset, int unitsPurchased) throws Exception {
 		double unitPurchasePrice = 1.0;
 		int unitsHeld = 0;
+		Date datePurchased = new Date(System.currentTimeMillis());
 		if (asset instanceof Stock) {
 			Stock stock = currentPrice.init(((Stock) asset).getTicker());
 			unitPurchasePrice = stock.getCurrentUnitValue();
+			if (asset.getUnitsPurchased() != 0) {
+				unitPurchasePrice = ((asset.getUnitPurchasePrice() * asset.getUnitsPurchased()) + 
+						(unitPurchasePrice * unitsPurchased)) / (unitsPurchased + asset.getUnitsPurchased());
+			}
 		}
 		Buy buy = new Buy(asset, unitsPurchased, unitPurchasePrice);
 		buyRepo.save(buy);
 		asset.setUnitsPurchased(asset.getUnitsPurchased() + unitsPurchased);
 		asset.setUnitPurchasePrice(unitPurchasePrice);
+		asset.setDatePurchased(datePurchased);
 		if (asset instanceof Stock) {
 			unitsHeld = asset.getUnitsPurchased() - asset.getUnitsSold();
 			((Stock) asset).setUnitsHeld(unitsHeld);
@@ -86,18 +96,27 @@ public class TradeDao {
 	public void createSell(Stock asset, int unitsSold) throws Exception {
 		double unitSoldPrice = 1.0;
 		int unitsHeld = 0;
+		double profit = 0;
+		Date dateSold = new Date(System.currentTimeMillis());
 		if (asset instanceof Stock) {
 			Stock stock = currentPrice.init(((Stock) asset).getTicker());
 			unitSoldPrice = stock.getCurrentUnitValue();
+			if (asset.getUnitsSold() != 0) {
+				unitSoldPrice = ((asset.getUnitSoldPrice() * asset.getUnitsSold()) + 
+						(unitSoldPrice * unitsSold)) / (unitsSold + asset.getUnitsSold());
+			}
 		}
 		Sell sell = new Sell(asset, unitsSold, unitSoldPrice);
-		sellRepo.save(sell);
 		asset.setUnitsSold(unitsSold);
 		asset.setUnitSoldPrice(unitSoldPrice);
+		asset.setDateSold(dateSold);
 		if (asset instanceof Stock) {
 			unitsHeld = asset.getUnitsPurchased() - asset.getUnitsSold();
 			((Stock) asset).setUnitsHeld(unitsHeld);
+			profit = (asset.getUnitSoldPrice() * asset.getUnitsSold()) - (asset.getUnitPurchasePrice() * asset.getUnitsPurchased());
+			sell.setProfit(profit);
 		}
+		sellRepo.save(sell);
 		assetRepo.save(asset);
 	}
 	
@@ -109,13 +128,6 @@ public class TradeDao {
 			trades.add(trade);
 			p.setTrades(trades);
 			portfolioRepo.save(p);
-		}
-		Asset asset = trade.getStock();
-		if (asset instanceof Stock) {
-			int unitsHeld = ((Stock) asset).getUnitsHeld();
-			if (unitsHeld == 0) {
-				stockDao.deleteStockById(asset.getIdAsset());
-			}
 		}
 	}
 	
@@ -136,10 +148,12 @@ public class TradeDao {
 	
 		this.updatePortfolioForTrade(trade, portfolio);
 		
-//		Asset asset2 = stockDao.findStockById(3);
-//		this.createSell(asset2, 5000);
-//		Trade trade2 = this.findAllTrades().get(1);
-//		this.updatePortfolioForTrade(trade2, portfolio);
+
+		Stock asset2 = stockDao.findStockById(3);
+		this.createSell(asset2, 2000);
+		Trade trade2 = this.findAllTrades().get(1);
+		this.updatePortfolioForTrade(trade2, portfolio);
+		
 	}
 
 }

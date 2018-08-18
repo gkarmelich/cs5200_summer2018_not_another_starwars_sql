@@ -19,6 +19,8 @@ public class Trade {
 	private int idTrade;
 	@ManyToOne
 	private Stock stock;
+
+	private double profit;
 	private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	
 	public Trade(Stock stock) {
@@ -27,6 +29,14 @@ public class Trade {
 	
 	public Trade() {
 		
+	}
+
+	public double getProfit() {
+		return profit;
+	}
+
+	public void setProfit(double profit) {
+		this.profit = profit;
 	}
 
 	public int getIdTrade() {
