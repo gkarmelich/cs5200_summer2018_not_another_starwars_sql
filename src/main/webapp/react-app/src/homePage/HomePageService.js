@@ -7,7 +7,8 @@ export default {
     onLogoutButtonClick,
     onProfileButtonClick,
     isAdminUser,
-    onAdminButtonClick
+    onAdminButtonClick,
+    setStaffPortfolio
 }
 
 function onComponentWillMount() {
@@ -41,4 +42,8 @@ function isAdminUser() {
 
 function onAdminButtonClick() {
     this.props.setLocation('admin');
+}
+
+function setStaffPortfolio(staffPortfolio) {
+    this.setState({ staffPortfolio });
 }

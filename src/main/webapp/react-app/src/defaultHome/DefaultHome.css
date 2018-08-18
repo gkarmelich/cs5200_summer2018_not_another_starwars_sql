@@ -17,3 +17,8 @@
     margin-left: calc(50% - 26px);
     cursor: pointer;
 }
+
+.default-container .error-message {
+    color: red;
+    text-align: center;
+}

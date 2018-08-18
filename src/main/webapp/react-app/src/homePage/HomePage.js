@@ -63,7 +63,13 @@ export default class HomePage extends Component {
               {this.state.myManagedPortfolios.map(p => <div className="managed">{p.investor.firstName} {p.investor.lastName} ({p.investor.userName})</div>)}
             </div>
           ) : (
-            <div> staff </div>
+            <div>
+              <h2 className="portfolio-title">My Managed Portfolios</h2>
+              {this.state.myStaffedPortfolios.map(p => <div className="staffed" onClick={() => this.setStaffPortfolio(p)}>
+                {p.investor.firstName} {p.investor.lastName} ({p.investor.userName})
+              </div>)}
+              {this.state.staffPortfolio && <StockChart user={this.state.staffPortfolio.investor} myPortfolio={this.state.staffPortfolio} />}
+            </div>
           )}
         </div>
 

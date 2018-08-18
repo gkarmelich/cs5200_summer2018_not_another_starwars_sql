@@ -56,3 +56,9 @@
   margin-top: 60px;
   text-align: center;
 }
+
+.stockChart-container .staffed {
+  margin-top: 60px;
+  text-align: center;
+  cursor: pointer;
+}

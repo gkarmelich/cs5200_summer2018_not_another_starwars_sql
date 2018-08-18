@@ -58,7 +58,7 @@ export default class StockChart extends Component {
 
           <div className="asset-info-container">
             <div className="asset-list">
-                <div className="asset-list-title">My Assets:</div>
+                <div className="asset-list-title">Assets:</div>
                 <input placeholder="search assets" onChange={this.onSearchChange} />
                 {this.state.myPortfolio && this.state.displayAssets.map(asset => 
                   <div className={"asset-name" + (asset === this.state.selectedAsset ? " selected" : "")} onClick={this.onAssetClick} >{this.getAssetName(asset)}</div>

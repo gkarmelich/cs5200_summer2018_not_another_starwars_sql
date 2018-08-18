@@ -21,7 +21,6 @@ function onTickerChange(event) {
 function search() {
     const ticker = this.state.ticker.toUpperCase();
     axios.get('/api/stockrequest/' + ticker).then(res => {
-        console.log(res.data);
         this.state.errorMessage = undefined;
 
         if (res.data['Error Message']) {
@@ -38,7 +37,6 @@ function search() {
                 data.push(record);
             });
             data.reverse();
-            console.log(data);
             this.setState({ data });
         }
 
