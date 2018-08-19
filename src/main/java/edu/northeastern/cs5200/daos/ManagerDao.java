@@ -87,7 +87,7 @@ public class ManagerDao {
 		List<Address> addresses = new ArrayList<>();
 		phones.add(phoneDao.findPhoneById(3));
 		addresses.add(addressDao.findAddressById(3));
-		this.createManager("Ryan", "Kalla", "rkalla", "password1", "rkalla@hotmail.com", dob, phones, addresses);
+		this.createManager("Bob", "Marley", "bob", "bob", "marley@hotmail.com", dob, phones, addresses);
 		
 	}
 

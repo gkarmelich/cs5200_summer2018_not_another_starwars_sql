@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import edu.northeastern.cs5200.api.RunAPI;
 import edu.northeastern.cs5200.objects.Asset;
 import edu.northeastern.cs5200.objects.Buy;
+import edu.northeastern.cs5200.objects.Cash;
 import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.objects.Stock;
@@ -19,6 +20,7 @@ import edu.northeastern.cs5200.objects.Sell;
 import edu.northeastern.cs5200.objects.Trade;
 import edu.northeastern.cs5200.repositories.AssetRepo;
 import edu.northeastern.cs5200.repositories.BuyRepo;
+import edu.northeastern.cs5200.repositories.CashRepo;
 import edu.northeastern.cs5200.repositories.PortfolioRepo;
 import edu.northeastern.cs5200.repositories.SellRepo;
 import edu.northeastern.cs5200.repositories.TradeRepo;
@@ -37,6 +39,10 @@ public class TradeDao {
 	
 	@Autowired
 	PortfolioRepo portfolioRepo;
+	
+	@Autowired
+	CashRepo cashRepo;
+	
 	
 	@Autowired
 	PortfolioDao portfolioDao;
@@ -113,7 +119,7 @@ public class TradeDao {
 		if (asset instanceof Stock) {
 			unitsHeld = asset.getUnitsPurchased() - asset.getUnitsSold();
 			((Stock) asset).setUnitsHeld(unitsHeld);
-			profit = (asset.getUnitSoldPrice() * asset.getUnitsSold()) - (asset.getUnitPurchasePrice() * asset.getUnitsPurchased());
+			profit = (asset.getUnitSoldPrice() * asset.getUnitsSold()) - (asset.getUnitPurchasePrice() * asset.getUnitsSold());
 			sell.setProfit(profit);
 		}
 		sellRepo.save(sell);
@@ -127,6 +133,17 @@ public class TradeDao {
 			List<Trade> trades = p.getTrades();
 			trades.add(trade);
 			p.setTrades(trades);
+			Cash cash = portfolioDao.findPortfolioCash(portfolio);
+			if (trade instanceof Buy) {
+				Stock stock = trade.getStock();
+				int cashOut = cash.getUnitsPurchased() - (int) (((Buy) trade).getUnitsPurchased() * stock.getCurrentUnitValue());
+				cash.setUnitsPurchased(cashOut);
+			}
+			if (trade instanceof Sell) {
+				int cashIn = cash.getUnitsPurchased() + (int) (trade.getProfit());
+				cash.setUnitsPurchased(cashIn);
+			}
+			cashRepo.save(cash);
 			portfolioRepo.save(p);
 		}
 	}
@@ -150,7 +167,7 @@ public class TradeDao {
 		
 
 		Stock asset2 = stockDao.findStockById(3);
-		this.createSell(asset2, 2000);
+		this.createSell(asset2, 10);
 		Trade trade2 = this.findAllTrades().get(1);
 		this.updatePortfolioForTrade(trade2, portfolio);
 		

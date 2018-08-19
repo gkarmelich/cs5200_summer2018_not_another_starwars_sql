@@ -92,7 +92,7 @@ public class InvestorDao {
 		phones.add(phoneDao.findPhoneById(5));
 		addresses.add(addressDao.findAddressById(2));
 		
-		this.createInvestor("George", "Karmelich", "george", "password1", "gkarmelich@hotmail.com", dob, phones, addresses);
+		this.createInvestor("Alice", "Wonderland", "alice", "alice", "alice@hotmail.com", dob, phones, addresses);
 		
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.northeastern.cs5200.objects.Asset;
+import edu.northeastern.cs5200.objects.Cash;
 import edu.northeastern.cs5200.objects.Portfolio;
 import edu.northeastern.cs5200.objects.Investor;
 import edu.northeastern.cs5200.objects.Manager;
@@ -86,11 +87,25 @@ public class PortfolioDao {
 		return null;
 	}
 	
+	public Cash findPortfolioCash(Portfolio portfolio) {
+		Optional<Portfolio> thisPortfolio = portfolioRepo.findById(portfolio.getIdPortfolio());
+		if (thisPortfolio != null) {
+			Portfolio p = thisPortfolio.get();
+			for(Asset asset : p.getAssets()) {
+				if (asset instanceof Cash) {
+					return (Cash) asset;
+				}
+			}
+		}
+		return null;
+	}
+	
+	
 	public void test() {
 		List<Asset> assets = (List<Asset>) assetRepo.findAll();
-		Investor investor = investorDao.findInvestorByName("George", "Karmelich");
-		Manager manager = managerDao.findManagerByName("Ryan", "Kalla");
-		Staff staff = staffDao.findStaffByName("Jose", "Annunziato");
+		Investor investor = investorDao.findInvestorByName("Alice", "Wonderland");
+		Manager manager = managerDao.findManagerByName("Bob", "Marley");
+		Staff staff = staffDao.findStaffByName("Charlie", "Brown");
 		List<Staff> staffList = new ArrayList<>();
 		staffList.add(staff);
 		this.createPortfolio(assets, investor, manager, staffList);

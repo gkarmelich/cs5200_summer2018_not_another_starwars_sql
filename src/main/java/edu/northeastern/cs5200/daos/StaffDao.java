@@ -86,7 +86,7 @@ public class StaffDao {
 		List<Address> addresses = new ArrayList<>();
 		phones.add(phoneDao.findPhoneById(4));
 		addresses.add(addressDao.findAddressById(4));
-		this.createStaff("Jose", "Annunziato", "annunziato", "password1!", "jannunz@hotmail.com", dob, phones, addresses);
+		this.createStaff("Charlie", "Brown", "charlie", "charlie", "charlie@hotmail.com", dob, phones, addresses);
 		
 	}
 
