@@ -36,13 +36,13 @@ public class TradeService {
 	
 	
 	@PostMapping("/buy")
-	public void createBuy(@RequestBody Buy buy) throws Exception {
-		tradeDao.createBuy(buy.getStock(), buy.getUnitsPurchased());
+	public Buy createBuy(@RequestBody Buy buy) throws Exception {
+		return tradeDao.createBuy(buy.getStock(), buy.getUnitsPurchased());
 	}
 	
 	@PostMapping("/sell")
-	public void createSell(@RequestBody Sell sell) throws Exception {
-		tradeDao.createSell(sell.getStock(), sell.getUnitsSold());
+	public Sell createSell(@RequestBody Sell sell) throws Exception {
+		return tradeDao.createSell(sell.getStock(), sell.getUnitsSold());
 	}
 	
 	@GetMapping("/trade/{id}")
@@ -57,9 +57,7 @@ public class TradeService {
 	
 	@PutMapping("/trade/{id}")
 	public void updatePortfolioForTrades(@PathVariable("id") int id, @RequestBody Portfolio portfolio) {
-		for (Trade trade : portfolio.getTrades()) {
-			tradeDao.updatePortfolioForTrade(trade, portfolio);
-		}
+		tradeDao.updatePortfolioForTrade(tradeDao.findTradeById(id), portfolio);
 		
 	}
 

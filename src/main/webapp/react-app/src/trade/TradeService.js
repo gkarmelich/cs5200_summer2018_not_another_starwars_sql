@@ -50,8 +50,8 @@ function submitTrade() {
                                 unitsPurchased: this.state.amount,
                                 unitPurchasePrice: validAsset.currentUnitValue
                             };
-                            axios.post('/api/buy', buy).then(() => {
-                                axios.put('/api/trade/' + tradePortfolio.idPortfolio, tradePortfolio).then(() => 
+                            axios.post('/api/buy', buy).then(res => {
+                                axios.put('/api/trade/' + res.data.idTrade, tradePortfolio).then(() => 
                                     this.setState({ successMessage: 'Successful Buy' }));  
                             }); 
         
@@ -66,9 +66,9 @@ function submitTrade() {
                             unitsSold: this.state.amount,
                             unitSoldPrice: tradeAsset.currentUnitValue
                         };
-                        axios.post('/api/sell', sell).then(() => {
-                            axios.put('/api/trade/' + tradePortfolio.idPortfolio, tradePortfolio).then(() => 
-                                this.setState({ successMessage: 'Successful Buy' })); 
+                        axios.post('/api/sell', sell).then(res => {
+                            axios.put('/api/trade/' + res.data.idTrade, tradePortfolio).then(() => 
+                                this.setState({ successMessage: 'Successful Sell' })); 
                         }); 
     
                     } else this.setState({ errorMessage: 'Invalid amount for Ticker' });

@@ -75,7 +75,7 @@ public class TradeDao {
 	}
 	
 	
-	public void createBuy(Stock asset, int unitsPurchased) throws Exception {
+	public Buy createBuy(Stock asset, int unitsPurchased) throws Exception {
 		double unitPurchasePrice = 1.0;
 		int unitsHeld = 0;
 		Date datePurchased = new Date(System.currentTimeMillis());
@@ -88,7 +88,6 @@ public class TradeDao {
 			}
 		}
 		Buy buy = new Buy(asset, unitsPurchased, unitPurchasePrice);
-		buyRepo.save(buy);
 		asset.setUnitsPurchased(asset.getUnitsPurchased() + unitsPurchased);
 		asset.setUnitPurchasePrice(unitPurchasePrice);
 		asset.setDatePurchased(datePurchased);
@@ -97,9 +96,10 @@ public class TradeDao {
 			((Stock) asset).setUnitsHeld(unitsHeld);
 		}
 		assetRepo.save(asset);
+		return buyRepo.save(buy);
 	}
 	
-	public void createSell(Stock asset, int unitsSold) throws Exception {
+	public Sell createSell(Stock asset, int unitsSold) throws Exception {
 		double unitSoldPrice = 1.0;
 		int unitsHeld = 0;
 		double profit = 0;
@@ -122,8 +122,8 @@ public class TradeDao {
 			profit = (asset.getUnitSoldPrice() * asset.getUnitsSold()) - (asset.getUnitPurchasePrice() * asset.getUnitsSold());
 			sell.setProfit(profit);
 		}
-		sellRepo.save(sell);
 		assetRepo.save(asset);
+		return sellRepo.save(sell);
 	}
 	
 	public void updatePortfolioForTrade(Trade trade, Portfolio portfolio ) {
