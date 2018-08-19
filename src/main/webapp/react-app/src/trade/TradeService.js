@@ -50,7 +50,10 @@ function submitTrade() {
                                 unitsPurchased: this.state.amount,
                                 unitPurchasePrice: validAsset.currentUnitValue
                             };
-                            axios.post('/api/buy', buy).then(() => this.setState({ successMessage: 'Successful Buy' })); 
+                            axios.post('/api/buy', buy).then(() => {
+                                axios.put('/api/trade/' + tradePortfolio.idPortfolio, tradePortfolio).then(() => 
+                                    this.setState({ successMessage: 'Successful Buy' }));  
+                            }); 
         
                         } else this.setState({ errorMessage: 'Insufficient funds' });
                     } else this.setState({ errorMessage: 'Ticker does not exist' });
@@ -63,7 +66,10 @@ function submitTrade() {
                             unitsSold: this.state.amount,
                             unitSoldPrice: tradeAsset.currentUnitValue
                         };
-                        axios.post('/api/sell', sell).then(() => this.setState({ successMessage: 'Successful Sell' })); 
+                        axios.post('/api/sell', sell).then(() => {
+                            axios.put('/api/trade/' + tradePortfolio.idPortfolio, tradePortfolio).then(() => 
+                                this.setState({ successMessage: 'Successful Buy' })); 
+                        }); 
     
                     } else this.setState({ errorMessage: 'Invalid amount for Ticker' });
                 } else this.setState({ errorMessage: 'Choose Buy or Sell' });
