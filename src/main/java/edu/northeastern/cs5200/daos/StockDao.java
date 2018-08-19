@@ -78,9 +78,9 @@ public class StockDao {
 		tickers.add("MSFT");
 		tickers.add("TWTR");
 		tickers.add("FB");
-		this.createStock(10000, 87.55, datePurchased, 0, 0.0, null, "Microsoft", "MSFT");
-		this.createStock(5000, 87.55, datePurchased, 0, 0.0, null, "Twitter", "TWTR");
-		this.createStock(100, 87.55, datePurchased, 0, 0.0, null, "Facebook", "FB");
+		this.createStock(100, 50, datePurchased, 0, 0.0, null, "Microsoft", "MSFT");
+		this.createStock(100, 20, datePurchased, 0, 0.0, null, "Twitter", "TWTR");
+		this.createStock(100, 50, datePurchased, 0, 0.0, null, "Facebook", "FB");
 		
 		APIConnector request = new APIConnector("LRYEV4NT70I96TDA", 2000);
 		

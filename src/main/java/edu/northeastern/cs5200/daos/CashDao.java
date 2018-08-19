@@ -51,7 +51,7 @@ public class CashDao {
 	
 	public void test() {
 		Date datePurchased = new Date(10000);
-		this.createCash(100, 1.0, datePurchased, 0, 0.0, null, "USD");
+		this.createCash(100000, 1.0, datePurchased, 0, 0.0, null, "USD");
 	}
 
 }

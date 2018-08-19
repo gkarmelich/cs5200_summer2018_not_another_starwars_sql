@@ -55,7 +55,7 @@ public class APIConnector {
 		      bufferedReader.close();
 		      List<Stock> output = parse(responseBuilder.toString());
 		      for (Stock stock : output) {
-		    	  System.out.println(stock.getTicker() + " " + stock.getCurrentUnitValue());
+//		    	  System.out.println(stock.getTicker() + " " + stock.getCurrentUnitValue());
 //		    	  System.out.println(stockDao.findAllStock());
 		      }
 		      return output;
@@ -80,7 +80,7 @@ public class APIConnector {
 		        responseBuilder.append(line);
 		      }
 		      bufferedReader.close();
-		      System.out.println(responseBuilder);
+//		      System.out.println(responseBuilder);
 		      return responseBuilder;
 		    } catch (IOException e) {
 				throw new Exception("failure sending request", e);

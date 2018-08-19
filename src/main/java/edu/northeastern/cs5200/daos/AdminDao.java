@@ -86,7 +86,7 @@ public class AdminDao {
 		List<Address> addresses = new ArrayList<>();
 		phones.add(phoneDao.findPhoneById(1));
 		addresses.add(addressDao.findAddressById(1));
-		this.createAdmin("Mark", "Karmelich", "mark", "password1", "mkarmelich@hotmail.com", dob, phones, addresses);
+		this.createAdmin("Jose", "Annunziato", "admin", "admin", "ja@hotmail.com", dob, phones, addresses);
 		
 	}
 
