@@ -81,12 +81,12 @@ public class AdminDao {
 	}
 	
 	public void test() {
-		Date dob = new Date(100000000);
-		List<Phone> phones = new ArrayList<>();
-		List<Address> addresses = new ArrayList<>();
-		phones.add(phoneDao.findPhoneById(1));
-		addresses.add(addressDao.findAddressById(1));
-		this.createAdmin("Jose", "Annunziato", "admin", "admin", "ja@hotmail.com", dob, phones, addresses);
+//		Date dob = new Date(100000000);
+//		List<Phone> phones = new ArrayList<>();
+//		List<Address> addresses = new ArrayList<>();
+//		phones.add(phoneDao.findPhoneById(1));
+//		addresses.add(addressDao.findAddressById(1));
+//		this.createAdmin("Jose", "Annunziato", "admin", "admin", "ja@hotmail.com", dob, phones, addresses);
 		
 	}
 

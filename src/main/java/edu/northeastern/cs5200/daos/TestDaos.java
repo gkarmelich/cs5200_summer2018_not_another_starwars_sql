@@ -63,7 +63,7 @@ public class TestDaos implements CommandLineRunner {
 
 		addressDao.test();
 		phoneDao.test();
-		adminDao.test();
+//		adminDao.test();
 		investorDao.test();
 		managerDao.test();
 		staffDao.test();

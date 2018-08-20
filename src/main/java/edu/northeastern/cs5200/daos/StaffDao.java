@@ -88,6 +88,13 @@ public class StaffDao {
 		addresses.add(addressDao.findAddressById(4));
 		this.createStaff("Charlie", "Brown", "charlie", "charlie", "charlie@hotmail.com", dob, phones, addresses);
 		
+		Date dob1 = new Date(100000000);
+		List<Phone> phones1 = new ArrayList<>();
+		List<Address> addresses1 = new ArrayList<>();
+		phones1.add(phoneDao.findPhoneById(1));
+		addresses1.add(addressDao.findAddressById(1));
+		this.createStaff("Jose", "Annunziato", "admin", "admin", "ja@hotmail.com", dob1, phones1, addresses1);
+		
 	}
 
 }
